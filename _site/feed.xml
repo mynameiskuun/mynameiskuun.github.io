@@ -1,4 +1,114 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-09-02T12:58:28+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">오늘보다 나은 내일</title><subtitle>An amazing website.</subtitle><author><name>mynameiskuun</name></author><entry><title type="html">Post: SQL 문제 풀이 - 프로그래머스</title><link href="http://localhost:4000/problem%20solving/SQL-%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4(1)/" rel="alternate" type="text/html" title="Post: SQL 문제 풀이 - 프로그래머스" /><published>2023-08-30T00:00:00+09:00</published><updated>2023-08-30T00:00:00+09:00</updated><id>http://localhost:4000/problem%20solving/SQL%20%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4(1)</id><content type="html" xml:base="http://localhost:4000/problem%20solving/SQL-%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4(1)/"><![CDATA[<h2 id="프로그래머스-sql-코딩테스트-연습">프로그래머스 SQL 코딩테스트 연습</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-09-05T23:55:08+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">오늘보다 나은 내일</title><subtitle>An amazing website.</subtitle><author><name>mynameiskuun</name></author><entry><title type="html">Post: SQL 문제 풀이 - SELECT</title><link href="http://localhost:4000/problem%20solving/SQL-%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4(2)/" rel="alternate" type="text/html" title="Post: SQL 문제 풀이 - SELECT" /><published>2023-09-02T00:00:00+09:00</published><updated>2023-09-02T00:00:00+09:00</updated><id>http://localhost:4000/problem%20solving/SQL%20%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4(2)</id><content type="html" xml:base="http://localhost:4000/problem%20solving/SQL-%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4(2)/"><![CDATA[<h2 id="프로그래머스-sql-코딩테스트-연습">프로그래머스 SQL 코딩테스트 연습</h2>
+<h3 id="오프라인온라인-판매-데이터-통합하기"><a href="https://school.programmers.co.kr/learn/courses/30/lessons/131537">오프라인/온라인 판매 데이터 통합하기</a></h3>
+
+<hr />
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ONLINE_SALE 테이블과 OFFLINE_SALE 테이블에서 2022년 3월의 오프라인/온라인 상품 판매 데이터의 
+판매 날짜, 상품ID, 유저ID, 판매량을 출력하는 SQL문을 작성해주세요. OFFLINE_SALE 테이블의 판매 
+데이터의 USER_ID 값은 NULL 로 표시해주세요. 결과는 판매일을 기준으로 오름차순 정렬해주시고 
+판매일이 같다면 상품 ID를 기준으로 오름차순, 상품ID까지 같다면 유저 ID를 기준으로 오름차순 정렬해주세요.
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <h2 id="어려웠던-부분">어려웠던 부분</h2>
+    <blockquote>
+      <ol>
+        <li>어떻게 두 테이블의 결과를 하나로 묶어서 반환할 것인가?<br /></li>
+        <li>테이블을 묶는 과정에서, OFFLINE_SALE 테이블에 없는 USER_ID 값을 어떻게 NULL로 표현할 것인가?</li>
+      </ol>
+    </blockquote>
+  </li>
+  <li>
+    <h2 id="문제-해결-중-학습한-내용">문제 해결 중 학습한 내용</h2>
+  </li>
+</ul>
+
+<h3 id="1-union--union-all">1. Union / Union All</h3>
+<blockquote>
+  <p>두개 이상의 SELECT 결과를 하나로 합쳐서 표현해야 할 때 사용된다. <br />
+출력하고자 하는 열의 갯수와 자료형이 서로 일치해야 한다. <br />
+이 과정에서 UNION은 중복되는 레코드를 모두 제거한다. 하지만 UNION ALL은 별도의 중복 제거 과정을 거치지 않는다.
+이 때문에, 중복 제거 과정을 거치지 않는 UNION ALL이 1.5배 ~ 4배 가량의 성능 차이로 빠르게 처리된다.</p>
+
+  <blockquote>
+    <p>사실 둘다 좋은 SQL 작성은 아니다. 나뉜 두가지의 테이블을 하나로 합쳐야 하는 경우가 있다면, 애초부터 분리 운영되야 할 이유가 없는 경우가 더 많다.</p>
+  </blockquote>
+
+  <p>UNION을 사용하게 될 경우, 가급적 최소 칼럼만을 사용하고, UNION ALL을 사용하는것이 좋다.</p>
+
+</blockquote>
+
+<h3 id="2-컬럼에-null-넣기">2. 컬럼에 NULL 넣기</h3>
+
+<blockquote>
+  <p>주로 UNION을 사용해서 서로다른 테이블 혹은 SELECT 문을 하나로 합칠때, 컬럼의 데이터 종류가 맞지 않거나 컬럼의 갯수를 맞추기 위하여 주로 사용하곤 한다.
+위 SQL 문제에서는, 두 테이블을 UNION을 사용하여 합쳐야 했으나, OFFLINE_SALE 테이블에는 없는 USER_ID 컬럼도 포함해서 UNION을 해야 했기 때문에, OFFLINE_SALE 테이블의 USER_ID에 한해서 임의로 NULL을 넣어야 했다.</p>
+
+  <blockquote>
+    <p>방법은? 그냥 SELECT NULL 하면 진짜로 NULL이 찍힌다.</p>
+  </blockquote>
+</blockquote>
+
+<h3 id="3-where-11-번외">3. WHERE 1=1 (번외)</h3>
+
+<blockquote>
+  <p><em>WHERE 1=1 ? 말 그대로 ‘참’ 을 의미한다. 굳이 없어도 될듯 한데 사용하는 이유는?</em> <br /></p>
+  <h3 id="1-쿼리-디버깅-시-주석-처리가-편하다">1. 쿼리 디버깅 시, 주석 처리가 편하다.</h3>
+  <blockquote>
+    <p>SELECT * <br />
+FROM CUSTOMERS <br />
+WHERE 1=1 <br />
+(1) AND IDX = #IDX <br />
+(2) AND CUSTOMER_ID LIKE ‘L%”; <br /></p>
+  </blockquote>
+
+  <p>쿼리 디버깅 시, (1), (2)의 주석처리 및 별도 테스트가 용이하다.</p>
+
+  <hr />
+  <h3 id="2-동적-쿼리에서-다른-조건절을-추가하기-용이하다">2. 동적 쿼리에서 다른 조건절을 추가하기 용이하다.</h3>
+  <blockquote>
+    <p>동적 쿼리에서는, 특정 조건에 따라 WHERE 구문의 AND 절이 통으로 추가되거나 삭제되곤 한다. 이 때, WHERE절 첫 시작부분 부터 동적으로 제외될 수 있다면 이후 조건절을
+작성하기가 매우 까다로워 지기 때문에, WHERE 1=1 등 무조건 참인 조건절을 시작부분에 추가한다. 이 덕분에, 이후의 AND 조건절들은 생성여부에 상관없이 문법 오류를 일으키지 않는다.</p>
+  </blockquote>
+
+  <p>myBatis를 사용한다면, 다음과 같은 형식으로 WHERE 1=1을 사용하지 않고도 편리하게 동적 쿼리를 작성할 수 있다.</p>
+
+  <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="k">where</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">if</span> <span class="n">test</span><span class="o">=</span><span class="nv">"state != null"</span><span class="o">&gt;</span>
+     <span class="k">state</span> <span class="o">=</span> <span class="o">#</span><span class="p">{</span><span class="k">state</span><span class="p">}</span>
+  <span class="o">&lt;/</span><span class="n">if</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">if</span> <span class="n">test</span><span class="o">=</span><span class="nv">"title != null"</span><span class="o">&gt;</span>
+     <span class="k">AND</span> <span class="n">title</span> <span class="k">like</span> <span class="o">#</span><span class="p">{</span><span class="n">title</span><span class="p">}</span>
+  <span class="o">&lt;/</span><span class="n">if</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">if</span> <span class="n">test</span><span class="o">=</span><span class="nv">"author != null and author.name != null"</span><span class="o">&gt;</span>
+     <span class="k">AND</span> <span class="n">author_name</span> <span class="k">like</span> <span class="o">#</span><span class="p">{</span><span class="n">author</span><span class="p">.</span><span class="n">name</span><span class="p">}</span>
+  <span class="o">&lt;/</span><span class="n">if</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="k">where</span><span class="o">&gt;</span>
+</code></pre></div>  </div>
+  <p>이 where절 안에서는, where절 시작이 AND 혹은 OR로 시작되면 자동으로 이를 생략 해 주는 기능이 있다.</p>
+
+  <ul>
+    <li>
+      <h3 id="주의할-점">주의할 점</h3>
+    </li>
+  </ul>
+
+  <p>WHERE 1=1 사용으로 발생할 수 있는 문제점은 크게 다음과 같다. <br /></p>
+
+  <ol>
+    <li>실행 계획 수립이 늦어질 수 있다.
+      <blockquote>
+        <p>조건절에 따라 적절한 인덱스를 선택하는 것과 같은 최적화 작업을 수행하는 데이터베이스 엔진에게 혼동을 줄 수 있다.</p>
+      </blockquote>
+    </li>
+    <li>쿼리의 결과가 변경되지 않기 때문에, 쿼리 결과가 캐시에 저장 될 때, 다른 쿼리 결과와 구분이 어려워져 캐시 성능이 저하될 수 있다.</li>
+  </ol>
+
+  <blockquote>
+    <p>따라서 WHERE 1=1을 사용할 때에는, 적절한 인덱스를 사용하는 등의 최적화 작업을 수행하여 쿼리의 성능을 향상시켜야 한다. 하지만 WHERE 1=1이 직접적인 성능저하의 원인이 되는 경우는 많지 않기 때문에, 특별히 걱정하지 않아도 된다.</p>
+  </blockquote>
+</blockquote>]]></content><author><name>mynameiskuun</name></author><category term="Problem Solving" /><category term="SQL" /><summary type="html"><![CDATA[프로그래머스 SQL 코딩테스트 연습 오프라인/온라인 판매 데이터 통합하기]]></summary></entry><entry><title type="html">Post: SQL 문제 풀이 - SELECT</title><link href="http://localhost:4000/problem%20solving/SQL-%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4(1)/" rel="alternate" type="text/html" title="Post: SQL 문제 풀이 - SELECT" /><published>2023-08-30T00:00:00+09:00</published><updated>2023-08-30T00:00:00+09:00</updated><id>http://localhost:4000/problem%20solving/SQL%20%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4(1)</id><content type="html" xml:base="http://localhost:4000/problem%20solving/SQL-%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4(1)/"><![CDATA[<h2 id="프로그래머스-sql-코딩테스트-연습">프로그래머스 SQL 코딩테스트 연습</h2>
 <h3 id="서울에-위치한-식당-목록-출력하기"><a href="https://school.programmers.co.kr/learn/courses/30/lessons/131118">서울에 위치한 식당 목록 출력하기</a></h3>
 
 <hr />

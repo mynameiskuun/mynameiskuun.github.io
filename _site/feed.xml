@@ -1,11 +1,335 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-09-05T23:55:08+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">오늘보다 나은 내일</title><subtitle>An amazing website.</subtitle><author><name>mynameiskuun</name></author><entry><title type="html">Post: SQL 문제 풀이 - SELECT</title><link href="http://localhost:4000/problem%20solving/SQL-%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4(2)/" rel="alternate" type="text/html" title="Post: SQL 문제 풀이 - SELECT" /><published>2023-09-02T00:00:00+09:00</published><updated>2023-09-02T00:00:00+09:00</updated><id>http://localhost:4000/problem%20solving/SQL%20%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4(2)</id><content type="html" xml:base="http://localhost:4000/problem%20solving/SQL-%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4(2)/"><![CDATA[<h2 id="프로그래머스-sql-코딩테스트-연습">프로그래머스 SQL 코딩테스트 연습</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-01-21T02:25:04+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">오늘보다 나은 내일</title><subtitle>An amazing website.</subtitle><author><name>mynameiskuun</name></author><entry><title type="html">Post: 알고리즘 문제풀이 - 소수 뒤집기</title><link href="http://localhost:4000/coding-test/%EC%86%8C%EC%88%98-%EB%92%A4%EC%A7%91%EA%B8%B0/" rel="alternate" type="text/html" title="Post: 알고리즘 문제풀이 - 소수 뒤집기" /><published>2024-01-09T00:00:00+09:00</published><updated>2024-01-09T00:00:00+09:00</updated><id>http://localhost:4000/coding-test/%EC%86%8C%EC%88%98%20%EB%92%A4%EC%A7%91%EA%B8%B0</id><content type="html" xml:base="http://localhost:4000/coding-test/%EC%86%8C%EC%88%98-%EB%92%A4%EC%A7%91%EA%B8%B0/"><![CDATA[<h2 id="알고리즘-문제풀이-연습---4">알고리즘 문제풀이 연습 - 4</h2>
+
+<h3><img src="/assets/images/reverse_prime.png" alt="소수 뒤집기" /></h3>
+
+<hr />
+
+<h3 id="제출한-답안">제출한 답안</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isPrime</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">)</span> <span class="o">{</span>
+
+        <span class="k">if</span><span class="o">(</span><span class="n">num</span><span class="o">==</span><span class="mi">1</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">num</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+             <span class="k">if</span><span class="o">(</span><span class="n">num</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                 <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+             <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span> <span class="n">count</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">input</span><span class="o">)</span> <span class="o">{</span>
+
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">answer</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">count</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">input</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+            <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+            <span class="k">while</span><span class="o">(</span><span class="n">tmp</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="kt">int</span> <span class="n">t</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">%</span><span class="mi">10</span><span class="o">;</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="n">res</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">t</span><span class="o">;</span>
+                <span class="n">tmp</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">/</span><span class="mi">10</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">isPrime</span><span class="o">(</span><span class="n">res</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">answer</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">res</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="어려웠던-점">어려웠던 점</h3>
+
+<ul>
+  <li>숫자를 어떻게 뒤집을 것인가?
+    <ul>
+      <li>개인적으로는 입력받은 수를 StringBuilder의 reverse() 메소드로 뒤집을 생각이었음.</li>
+      <li>단순히 문자열을 뒤집는것 보다는, 위의 방법처럼 나머지와 몫을 이용해 수학적으로 접근하기.</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>t : %10 연산을 통해 가장 끝자리 수(나머지)를 추출하기 위한 변수.<br />
+res : 뒤집은 문자열을 저장하기 위한 변수. t의 값이 res * 10을 통해 자릿수를 형성함. <br />
+tmp : /10 연산을 통해 자릿수를 줄여나감. 반복문의 종료시점을 생성.</p>
+</blockquote>]]></content><author><name>mynameiskuun</name></author><category term="coding-test" /><category term="Algorithm" /><summary type="html"><![CDATA[알고리즘 문제풀이 연습 - 4]]></summary></entry><entry><title type="html">Post: 알고리즘 문제풀이 - 소수의 판별</title><link href="http://localhost:4000/coding-test/%EC%97%90%EB%9D%BC%ED%86%A0%EC%8A%A4%ED%85%8C%EB%84%A4%EC%8A%A4%EC%9D%98_%EC%B2%B4/" rel="alternate" type="text/html" title="Post: 알고리즘 문제풀이 - 소수의 판별" /><published>2024-01-04T00:00:00+09:00</published><updated>2024-01-04T00:00:00+09:00</updated><id>http://localhost:4000/coding-test/%EC%97%90%EB%9D%BC%ED%86%A0%EC%8A%A4%ED%85%8C%EB%84%A4%EC%8A%A4%EC%9D%98_%EC%B2%B4</id><content type="html" xml:base="http://localhost:4000/coding-test/%EC%97%90%EB%9D%BC%ED%86%A0%EC%8A%A4%ED%85%8C%EB%84%A4%EC%8A%A4%EC%9D%98_%EC%B2%B4/"><![CDATA[<h2 id="알고리즘-문제풀이-연습---3">알고리즘 문제풀이 연습 - 3</h2>
+
+<h3><img src="/assets/images/prime.png" alt="소수의 판별" /></h3>
+
+<hr />
+
+<h3 id="제출한-답안">제출한 답안</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span><span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span> <span class="n">count</span><span class="o">)</span> <span class="o">{</span>
+
+        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">array</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">count</span><span class="o">+</span><span class="mi">1</span><span class="o">];</span>
+        <span class="n">array</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="n">array</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">count</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">2</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;=</span><span class="n">i</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span> <span class="c1">// 소수 판별 ) {</span>
+                    <span class="n">answer</span><span class="o">++;</span>
+                    <span class="c1">// 판별된 소수 배수 val 1 처리</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+            <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="c1">//main method 생략</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="어려웠던-점">어려웠던 점</h3>
+
+<ul>
+  <li>소수 판별 어떻게?
+    <ul>
+      <li>2 ~ count까지의 수를 반복문을 통해 소수 여부를 판별하려 했음. 하지만 위의 로직대로라면, 2와 3은 소수이지만 내부 반복문에서 2와 3으로 나눠지기 때문에 나머지가 0으로 되어 소수가 아닌것으로 처리되는 이슈. (사전처리 3까지 하고, i = 4로 설정?)</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="모범-답안">모범 답안</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+
+  <span class="kd">public</span> <span class="kt">int</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span> <span class="n">count</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="kt">int</span><span class="o">[]</span> <span class="n">array</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">count</span><span class="o">+</span><span class="mi">1</span><span class="o">];</span>
+
+    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">count</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+      <span class="k">if</span><span class="o">(</span><span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">]==</span><span class="mi">0</span><span class="o">){</span>
+        <span class="n">answer</span><span class="o">++;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="n">i</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;=</span><span class="n">count</span><span class="o">;</span> <span class="n">j</span><span class="o">=</span><span class="n">j</span><span class="o">+</span><span class="n">i</span><span class="o">)</span> <span class="o">{</span>
+         <span class="n">array</span><span class="o">[</span><span class="n">j</span><span class="o">]=</span><span class="mi">1</span><span class="o">;</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+      <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+  <span class="o">}</span>
+
+    <span class="c1">//main method 생략</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="주목할-포인트">주목할 포인트</h3>
+
+<ul>
+  <li>2, 3의 처리방법
+    <ul>
+      <li>int형 배열 생성 시 기본값은 0. 2부터 반복문을 돌리고, 바로 value = 0 검사.</li>
+      <li>2, 3은 value 0이기 때문에 소수 처리 가능. 또한 배수 처리도 가능.</li>
+      <li>소수 판별 로직을 하나하나 작성하지 않아도, 2, 3의 사전 처리 때문에 자연스럽게 배수처리가 가능.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="심화">심화</h3>
+
+<ul>
+  <li>위의 문제에서는 소수의 갯수만 출력하지만, 실제로 소수 그 자체를 출력하는 문제로 변형된다면?</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">function</span> <span class="nf">isPrime</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">)</span> <span class="o">{</span>
+  <span class="k">if</span><span class="o">(</span><span class="n">num</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span>
+    <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+  <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">num</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">num</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+  <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="k">if</span><span class="o">(</span><span class="n">isPrime</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">))</span> <span class="o">{</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>2 ~ n 까지의 숫자 중 어느것도 약수가 아닐때, (1과 자기 자신이 약수일 때) 해당 수는 소수가 된다.</p>
+</blockquote>]]></content><author><name>mynameiskuun</name></author><category term="coding-test" /><category term="Algorithm" /><summary type="html"><![CDATA[알고리즘 문제풀이 연습 - 3]]></summary></entry><entry><title type="html">Post: 알고리즘 문제풀이 - 피보나치 수열</title><link href="http://localhost:4000/coding-test/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4(2)/" rel="alternate" type="text/html" title="Post: 알고리즘 문제풀이 - 피보나치 수열" /><published>2023-12-21T00:00:00+09:00</published><updated>2023-12-21T00:00:00+09:00</updated><id>http://localhost:4000/coding-test/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%20%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4(2)</id><content type="html" xml:base="http://localhost:4000/coding-test/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4(2)/"><![CDATA[<h2 id="알고리즘-문제풀이-연습---2">알고리즘 문제풀이 연습 - 2</h2>
+
+<h3><img src="/assets/images/Algorithm_2.png" alt="피보나치 수열" /></h3>
+
+<hr />
+
+<h3 id="제출한-답안">제출한 답안</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span> <span class="n">count</span><span class="o">)</span> <span class="o">{</span>
+
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">answer</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">count</span><span class="o">];</span>
+        <span class="n">answer</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="n">answer</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">count</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">answer</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">answer</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="o">]</span> <span class="o">+</span> <span class="n">answer</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">];</span>
+        <span class="o">}</span>
+
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="문제-해결-중-학습한-부분">문제 해결 중 학습한 부분.</h2>
+
+<h3 id="재귀함수">재귀함수</h3>
+
+<ul>
+  <li>
+    <p>재귀란?</p>
+
+    <blockquote>
+      <p>컴퓨터 과학에서, 자신을 정의할 때 자기 자신을 재참조 하는 방법.</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>재귀함수란?</p>
+    <blockquote>
+      <p>재귀의 설명 그대로, 함수에서 자기 자신을 다시 호출해 작업을 수행하는 방식.
+주로 반복문을 구현할 때 사용한다.</p>
+    </blockquote>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="재귀함수를-이용한-피보나치-수열-구현">재귀함수를 이용한 피보나치 수열 구현</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span> <span class="n">count</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="k">if</span><span class="o">(</span><span class="n">count</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="nf">solution</span><span class="o">(</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="o">)</span> <span class="o">+</span> <span class="n">solution</span><span class="o">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="재귀함수의-장단점">재귀함수의 장단점</h3>
+
+<h4 id="장점">장점</h4>
+
+<ul>
+  <li>가독성이 향상된다.</li>
+  <li>변수 사용을 줄여줌으로서, 변경 가능성(mutable state)을 최소화 시켜 프로그램의 안정성을 향상시킨다.</li>
+</ul>
+
+<h4 id="단점">단점</h4>
+
+<ul>
+  <li>매개변수, 지역변수, 리턴 값, 함수 종료 후 복귀지점이 스택 메모리에 저장되기 때문에, 메모리 사용량이 높다.</li>
+  <li>그렇기 때문에 일반적으로 반복문 보다 성능이 낮다.</li>
+</ul>
+
+<hr />
+
+<h3 id="재귀함수-단점-보완을-위한-방법">재귀함수 단점 보완을 위한 방법</h3>
+
+<h4 id="메모이제이션">메모이제이션</h4>
+
+<blockquote>
+  <p>재귀함수의 단점을 보완하기 위한 방법으로 값비싼 함수 호출의 결과를 캐싱하고, 동일한 입력이 발생할 때 함수를 호출하지 않고 캐싱된 결과를 반환하는 기술.</p>
+</blockquote>
+
+<hr />
+
+<h3 id="메모이제이션을-사용해-구현한-피보나치-수열">메모이제이션을 사용해 구현한 피보나치 수열</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">memo</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kt">int</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span> <span class="n">count</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">memo</span><span class="o">[</span><span class="n">count</span><span class="o">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">memo</span><span class="o">[</span><span class="n">count</span><span class="o">];</span>
+    <span class="o">}</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">count</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">memo</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">solution</span><span class="o">(</span><span class="n">count</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">+</span> <span class="n">solution</span><span class="o">(</span><span class="n">count</span> <span class="o">-</span> <span class="mi">2</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>기존의 로직이라면, 캐싱된 값이 없기 때문에 콜스택에 count만큼 지역변수, 매개변수, 반환주소 등이 쌓이고, count의 마지막 부분에 가서야 모든 작업이 수행됨.</li>
+  <li>메모이제이션을 사용할 경우, static 변수에 한번 연산된 값을 저장하게 됨. 이 경우, 한번 연산된 값은 이후 재귀함수를 통해 재연산이 불필요.</li>
+</ul>
+
+<blockquote>
+  <p>핵심 : 한번 연산된 값을 저장해서, 이후 동일 작업이 호출될 때 재연산을 하는게 아닌 저장된 값을 반환한다.</p>
+</blockquote>]]></content><author><name>mynameiskuun</name></author><category term="coding-test" /><category term="Algorithm" /><summary type="html"><![CDATA[알고리즘 문제풀이 연습 - 2]]></summary></entry><entry><title type="html">Post: 알고리즘 문제풀이 - 가장 짧은 문자거리 찾기</title><link href="http://localhost:4000/coding-test/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4/" rel="alternate" type="text/html" title="Post: 알고리즘 문제풀이 - 가장 짧은 문자거리 찾기" /><published>2023-12-13T00:00:00+09:00</published><updated>2023-12-13T00:00:00+09:00</updated><id>http://localhost:4000/coding-test/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%20%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4</id><content type="html" xml:base="http://localhost:4000/coding-test/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4/"><![CDATA[<h2 id="알고리즘-문제풀이-연습---1">알고리즘 문제풀이 연습 - 1</h2>
+
+<h3><img src="/assets/images/Algorithm_1.png" alt="가장짧은 문자거리 찾기" /></h3>
+
+<hr />
+
+<h2 id="어려웠던-부분">어려웠던 부분</h2>
+
+<h3 id="1-구현-방법의-잘못된-접근">1. 구현 방법의 잘못된 접근</h3>
+
+<ul>
+  <li>while문 속에서 lt, rt 값을 사용하여 왼쪽과 오른쪽을 한번에 탐색하려고 시도함.</li>
+  <li>문자열에서 비교 대상 문자가 속해있는 index값을 전부 저장해 두고, 문자열을 쪼개서 반복문을 돌며 index - 문자 값 중 가장 작은값을 return하려 시도.</li>
+</ul>
+
+<blockquote>
+  <p>문제를 단계별로 나누어 해결하기 보다, 한번에 해결하려고 하다 보니 위와 같은 어렵고 복잡한 구현 방법을 생각하게 되었음.</p>
+</blockquote>
+
+<blockquote>
+  <p>강의에서 제시한 방법으로 구현 할 시, 문자열의 length * 2 만큼만 반복하면 해결이 가능함. 하지만 위의 방법으로 구현 시, !string.length() 만큼 반복 횟수가 늘어남.</p>
+</blockquote>
+
+<h2 id="문제-해결-중-학습한-내용">문제 해결 중 학습한 내용</h2>
+
+<ul>
+  <li>문제 접근 방법</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">answer</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">str</span><span class="o">.</span><span class="na">length</span><span class="o">()];</span>
+        <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="mi">1000</span><span class="o">;</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">str</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">str</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">==</span> <span class="n">c</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+                <span class="n">answer</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">index</span><span class="o">;</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="n">index</span><span class="o">++;</span>
+                <span class="n">answer</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">index</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>문자열의 index를 왼쪽부터 조회하며, 해당 index의 왼편에서 비교대상 문자를 찾아 얼마나 떨어져 있는지 그 값을 저장한다. (오른쪽에 있을 경우는 생각하지 않는다.)</p>
+</blockquote>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="o">--)</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">str</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">j</span><span class="o">)</span> <span class="o">==</span> <span class="n">c</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="n">index</span><span class="o">++;</span>
+                <span class="n">answer</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">answer</span><span class="o">[</span><span class="n">j</span><span class="o">],</span> <span class="n">index</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>문자열의 index를 오른쪽부터 왼쪽으로 조회한다. 이 과정에서, 앞서 조회했던 값보다 위에서 조회한 절대값이 더 작을 경우(오른편에 있는 문자로부터의 절대값이 더 작을경우) 해당 index를 저장한다.</p>
+</blockquote>]]></content><author><name>mynameiskuun</name></author><category term="coding-test" /><category term="Algorithm" /><summary type="html"><![CDATA[알고리즘 문제풀이 연습 - 1]]></summary></entry><entry><title type="html">Post: SQL 문제 풀이 - SELECT</title><link href="http://localhost:4000/coding-test/SQL-%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4(2)/" rel="alternate" type="text/html" title="Post: SQL 문제 풀이 - SELECT" /><published>2023-09-02T00:00:00+09:00</published><updated>2023-09-02T00:00:00+09:00</updated><id>http://localhost:4000/coding-test/SQL%20%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4(2)</id><content type="html" xml:base="http://localhost:4000/coding-test/SQL-%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4(2)/"><![CDATA[<h2 id="프로그래머스-sql-코딩테스트-연습">프로그래머스 SQL 코딩테스트 연습</h2>
+
 <h3 id="오프라인온라인-판매-데이터-통합하기"><a href="https://school.programmers.co.kr/learn/courses/30/lessons/131537">오프라인/온라인 판매 데이터 통합하기</a></h3>
 
 <hr />
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ONLINE_SALE 테이블과 OFFLINE_SALE 테이블에서 2022년 3월의 오프라인/온라인 상품 판매 데이터의 
-판매 날짜, 상품ID, 유저ID, 판매량을 출력하는 SQL문을 작성해주세요. OFFLINE_SALE 테이블의 판매 
-데이터의 USER_ID 값은 NULL 로 표시해주세요. 결과는 판매일을 기준으로 오름차순 정렬해주시고 
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ONLINE_SALE 테이블과 OFFLINE_SALE 테이블에서 2022년 3월의 오프라인/온라인 상품 판매 데이터의
+판매 날짜, 상품ID, 유저ID, 판매량을 출력하는 SQL문을 작성해주세요. OFFLINE_SALE 테이블의 판매
+데이터의 USER_ID 값은 NULL 로 표시해주세요. 결과는 판매일을 기준으로 오름차순 정렬해주시고
 판매일이 같다면 상품 ID를 기준으로 오름차순, 상품ID까지 같다면 유저 ID를 기준으로 오름차순 정렬해주세요.
 </code></pre></div></div>
 
@@ -25,6 +349,7 @@
 </ul>
 
 <h3 id="1-union--union-all">1. Union / Union All</h3>
+
 <blockquote>
   <p>두개 이상의 SELECT 결과를 하나로 합쳐서 표현해야 할 때 사용된다. <br />
 출력하고자 하는 열의 갯수와 자료형이 서로 일치해야 한다. <br />
@@ -36,7 +361,6 @@
   </blockquote>
 
   <p>UNION을 사용하게 될 경우, 가급적 최소 칼럼만을 사용하고, UNION ALL을 사용하는것이 좋다.</p>
-
 </blockquote>
 
 <h3 id="2-컬럼에-null-넣기">2. 컬럼에 NULL 넣기</h3>
@@ -54,7 +378,9 @@
 
 <blockquote>
   <p><em>WHERE 1=1 ? 말 그대로 ‘참’ 을 의미한다. 굳이 없어도 될듯 한데 사용하는 이유는?</em> <br /></p>
+
   <h3 id="1-쿼리-디버깅-시-주석-처리가-편하다">1. 쿼리 디버깅 시, 주석 처리가 편하다.</h3>
+
   <blockquote>
     <p>SELECT * <br />
 FROM CUSTOMERS <br />
@@ -66,7 +392,9 @@ WHERE 1=1 <br />
   <p>쿼리 디버깅 시, (1), (2)의 주석처리 및 별도 테스트가 용이하다.</p>
 
   <hr />
+
   <h3 id="2-동적-쿼리에서-다른-조건절을-추가하기-용이하다">2. 동적 쿼리에서 다른 조건절을 추가하기 용이하다.</h3>
+
   <blockquote>
     <p>동적 쿼리에서는, 특정 조건에 따라 WHERE 구문의 AND 절이 통으로 추가되거나 삭제되곤 한다. 이 때, WHERE절 첫 시작부분 부터 동적으로 제외될 수 있다면 이후 조건절을
 작성하기가 매우 까다로워 지기 때문에, WHERE 1=1 등 무조건 참인 조건절을 시작부분에 추가한다. 이 덕분에, 이후의 AND 조건절들은 생성여부에 상관없이 문법 오류를 일으키지 않는다.</p>
@@ -86,6 +414,7 @@ WHERE 1=1 <br />
   <span class="o">&lt;/</span><span class="n">if</span><span class="o">&gt;</span>
 <span class="o">&lt;/</span><span class="k">where</span><span class="o">&gt;</span>
 </code></pre></div>  </div>
+
   <p>이 where절 안에서는, where절 시작이 AND 혹은 OR로 시작되면 자동으로 이를 생략 해 주는 기능이 있다.</p>
 
   <ul>
@@ -108,15 +437,17 @@ WHERE 1=1 <br />
   <blockquote>
     <p>따라서 WHERE 1=1을 사용할 때에는, 적절한 인덱스를 사용하는 등의 최적화 작업을 수행하여 쿼리의 성능을 향상시켜야 한다. 하지만 WHERE 1=1이 직접적인 성능저하의 원인이 되는 경우는 많지 않기 때문에, 특별히 걱정하지 않아도 된다.</p>
   </blockquote>
-</blockquote>]]></content><author><name>mynameiskuun</name></author><category term="Problem Solving" /><category term="SQL" /><summary type="html"><![CDATA[프로그래머스 SQL 코딩테스트 연습 오프라인/온라인 판매 데이터 통합하기]]></summary></entry><entry><title type="html">Post: SQL 문제 풀이 - SELECT</title><link href="http://localhost:4000/problem%20solving/SQL-%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4(1)/" rel="alternate" type="text/html" title="Post: SQL 문제 풀이 - SELECT" /><published>2023-08-30T00:00:00+09:00</published><updated>2023-08-30T00:00:00+09:00</updated><id>http://localhost:4000/problem%20solving/SQL%20%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4(1)</id><content type="html" xml:base="http://localhost:4000/problem%20solving/SQL-%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4(1)/"><![CDATA[<h2 id="프로그래머스-sql-코딩테스트-연습">프로그래머스 SQL 코딩테스트 연습</h2>
+</blockquote>]]></content><author><name>mynameiskuun</name></author><category term="coding-test" /><category term="SQL" /><summary type="html"><![CDATA[프로그래머스 SQL 코딩테스트 연습]]></summary></entry><entry><title type="html">Post: SQL 문제 풀이 - SELECT</title><link href="http://localhost:4000/coding-test/SQL-%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4(1)/" rel="alternate" type="text/html" title="Post: SQL 문제 풀이 - SELECT" /><published>2023-08-30T00:00:00+09:00</published><updated>2023-08-30T00:00:00+09:00</updated><id>http://localhost:4000/coding-test/SQL%20%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4(1)</id><content type="html" xml:base="http://localhost:4000/coding-test/SQL-%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4(1)/"><![CDATA[<h2 id="프로그래머스-sql-코딩테스트-연습">프로그래머스 SQL 코딩테스트 연습</h2>
+
 <h3 id="서울에-위치한-식당-목록-출력하기"><a href="https://school.programmers.co.kr/learn/courses/30/lessons/131118">서울에 위치한 식당 목록 출력하기</a></h3>
 
 <hr />
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>REST_INFO와 REST_REVIEW 테이블에서 서울에 위치한 식당들의 식당 ID, 식당 이름, 음식 종류, 즐겨찾기수, 주소, 
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>REST_INFO와 REST_REVIEW 테이블에서 서울에 위치한 식당들의 식당 ID, 식당 이름, 음식 종류, 즐겨찾기수, 주소,
 리뷰 평균 점수를 조회하는 SQL문을 작성해주세요. 이때 리뷰 평균점수는 소수점 세 번째 자리에서 반올림 해주시고 결과는
 평균점수를 기준으로 내림차순 정렬해주시고, 평균점수가 같다면 즐겨찾기수를 기준으로 내림차순 정렬해주세요.
 </code></pre></div></div>
+
 <ul>
   <li>
     <h2 id="문제-해결-중-학습한-내용">문제 해결 중 학습한 내용</h2>
@@ -148,28 +479,32 @@ WHERE 절은 그룹핑 되기 전 칼럼에 대한 필터링, HAVING은 그룹�
 <ul>
   <li>
     <h2 id="정답">정답</h2>
-    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span>                      
-  <span class="n">i</span><span class="p">.</span><span class="n">REST_ID</span><span class="p">,</span>
-  <span class="n">i</span><span class="p">.</span><span class="n">REST_NAME</span><span class="p">,</span>
-  <span class="n">i</span><span class="p">.</span><span class="n">FOOD_TYPE</span><span class="p">,</span>
-  <span class="n">i</span><span class="p">.</span><span class="n">FAVORITES</span><span class="p">,</span>
-  <span class="n">i</span><span class="p">.</span><span class="n">ADDRESS</span><span class="p">,</span>
-  <span class="n">ROUND</span><span class="p">(</span><span class="k">AVG</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">REVIEW_SCORE</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span> <span class="k">as</span> <span class="n">SCORE</span>
-<span class="k">FROM</span> 
-  <span class="n">rest_info</span> <span class="n">i</span>
-<span class="k">JOIN</span> 
-  <span class="n">rest_review</span> <span class="n">r</span>
-<span class="k">ON</span> 
-  <span class="n">i</span><span class="p">.</span><span class="n">REST_ID</span> <span class="o">=</span> <span class="n">r</span><span class="p">.</span><span class="n">REST_ID</span>
-<span class="k">WHERE</span>                       
-  <span class="n">i</span><span class="p">.</span><span class="n">ADDRESS</span> <span class="k">LIKE</span> <span class="s1">'서울%'</span>
-<span class="k">GROUP</span> <span class="k">BY</span> 
-  <span class="n">i</span><span class="p">.</span><span class="n">REST_NAME</span>
-<span class="k">ORDER</span> <span class="k">BY</span> 
-  <span class="n">SCORE</span> <span class="k">DESC</span><span class="p">,</span>
-  <span class="n">FAVORITES</span> <span class="k">DESC</span>
-</code></pre></div>    </div>
   </li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span>
+    <span class="n">i</span><span class="p">.</span><span class="n">REST_ID</span><span class="p">,</span>
+    <span class="n">i</span><span class="p">.</span><span class="n">REST_NAME</span><span class="p">,</span>
+    <span class="n">i</span><span class="p">.</span><span class="n">FOOD_TYPE</span><span class="p">,</span>
+    <span class="n">i</span><span class="p">.</span><span class="n">FAVORITES</span><span class="p">,</span>
+    <span class="n">i</span><span class="p">.</span><span class="n">ADDRESS</span><span class="p">,</span>
+    <span class="n">ROUND</span><span class="p">(</span><span class="k">AVG</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">REVIEW_SCORE</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span> <span class="k">as</span> <span class="n">SCORE</span>
+<span class="k">FROM</span>
+    <span class="n">rest_info</span> <span class="n">i</span>
+<span class="k">JOIN</span>
+    <span class="n">rest_review</span> <span class="n">r</span>
+<span class="k">ON</span>
+    <span class="n">i</span><span class="p">.</span><span class="n">REST_ID</span> <span class="o">=</span> <span class="n">r</span><span class="p">.</span><span class="n">REST_ID</span>
+<span class="k">WHERE</span>
+    <span class="n">i</span><span class="p">.</span><span class="n">ADDRESS</span> <span class="k">LIKE</span> <span class="s1">'서울%'</span>
+<span class="k">GROUP</span> <span class="k">BY</span>
+    <span class="n">i</span><span class="p">.</span><span class="n">REST_NAME</span>
+<span class="k">ORDER</span> <span class="k">BY</span>
+    <span class="n">SCORE</span> <span class="k">DESC</span><span class="p">,</span>
+    <span class="n">FAVORITES</span> <span class="k">DESC</span>
+</code></pre></div></div>
+
+<ul>
   <li>
     <h2 id="오답-포인트">오답 포인트</h2>
   </li>
@@ -181,4 +516,4 @@ WHERE 절은 그룹핑 되기 전 칼럼에 대한 필터링, HAVING은 그룹�
       <li>LEFT JOIN 사용 시 리뷰가 한건도 작성되지 않은 식당 정보도 포함됨.</li>
     </ul>
   </li>
-</ol>]]></content><author><name>mynameiskuun</name></author><category term="Problem Solving" /><category term="SQL" /><summary type="html"><![CDATA[프로그래머스 SQL 코딩테스트 연습 서울에 위치한 식당 목록 출력하기]]></summary></entry></feed>
+</ol>]]></content><author><name>mynameiskuun</name></author><category term="coding-test" /><category term="SQL" /><summary type="html"><![CDATA[프로그래머스 SQL 코딩테스트 연습]]></summary></entry></feed>

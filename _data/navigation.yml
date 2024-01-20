@@ -1,13 +1,51 @@
 # main links
 main:
-  - title: "Introduce"
-    url: /about/
-  - title: "Category"
-    url: "/categories/"
-  - title: "Tags"
-    url: /tags/
-  - title: "Year"
-    url: /year/
+  # title : "title" 네비게이션 바에 표시되는 이름
+  # url : "/example/" 클릭시 이동할 URL
+
+  # - title: "Introduce"
+  #   url: /introduce/
+  # - title: "Category"
+  #   url: "/category/"
+  # - title: "Tags"
+  #   url: /tags/
+  # - title: "Year"
+  #   url: /year/
+
+sidebar-category:
+  - title: "Coding Test"
+    children:
+      - title: "All"
+        url: "/coding-test/all"
+      - title: "SQL"
+        url: "/coding-test/sql"
+      - title: "Algorithm"
+        url: "/coding-test/algorithm"
+
+  - title: "Problem Solve"
+    children:
+      - title: "All"
+        url: "/problem-solve/all"
+
+  - title: "Computer Science"
+    children:
+      - title: "All"
+        url: "/computer-science/all"
+      - title: "Data Structure"
+        url: "/computer-science/data"
+      - title: "Network"
+        url: "/computer-science/network"
+      - title: "OS"
+        url: "/computer-science/os"
+
+  - title: "Book Study"
+    children:
+      - title: "All"
+        url: "/book-study/all"
+      - title: "만들면서 배우는 클린 아키텍쳐"
+        url: "/book-study/clean-architecture"
+      - title: "실용적인 자바스크립트"
+        url: "/book-study/practical-js"
 
   #  - title: "Quick-Start Guide"
   #    url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/

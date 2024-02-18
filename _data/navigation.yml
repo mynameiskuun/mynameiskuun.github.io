@@ -13,6 +13,19 @@ main:
   #   url: /year/
 
 sidebar-category:
+  - title: "DEV"
+    children:
+      - title: "All"
+        url: /dev/all
+      - title: "JAVA"
+        url: "/dev/java"
+      - title: "Database"
+        url: "/dev/database"
+      - title: "JavaScript"
+        url: "/dev/javascript"
+      - title: "DevOps"
+        url: "/dev/devops"
+
   - title: "Coding Test"
     children:
       - title: "All"
@@ -42,6 +55,8 @@ sidebar-category:
     children:
       - title: "All"
         url: "/book-study/all"
+      - title: "Javascript Deep Dive"
+        url: "/book-study/js-deepdive"
       - title: "만들면서 배우는 클린 아키텍쳐"
         url: "/book-study/clean-architecture"
       - title: "실용적인 자바스크립트"

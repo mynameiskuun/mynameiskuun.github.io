@@ -1,0 +1,1113 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>JavaScript Deepdive - this - 오늘보다 나은 내일</title>
+<meta name="description" content="this 키워드">
+
+
+  <meta name="author" content="mynameiskuun">
+  
+  <meta property="article:author" content="mynameiskuun">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="오늘보다 나은 내일">
+<meta property="og:title" content="JavaScript Deepdive - this">
+<meta property="og:url" content="http://localhost:4000/book-study/Deepdive_about_this/">
+
+
+  <meta property="og:description" content="this 키워드">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2024-02-10T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/book-study/Deepdive_about_this/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "mynameiskuun",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="오늘보다 나은 내일 Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<link rel="shortcut icon" href="/assets/images/favicon(32x32).png" />
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          오늘보다 나은 내일
+          
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/profile.jpg" alt="mynameiskuun" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">mynameiskuun</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p><strong>학습 오류 수정을 위한 포스팅</strong></p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:mynameiskuun@gmail.com" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/mynameiskuun" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+    
+      
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">토글 메뉴</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <span class="nav__sub-title">DEV</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="/dev/all">All</a></li>
+          
+            <li><a href="/dev/java">JAVA</a></li>
+          
+            <li><a href="/dev/database">Database</a></li>
+          
+            <li><a href="/dev/javascript">JavaScript</a></li>
+          
+            <li><a href="/dev/devops">DevOps</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">Coding Test</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="/coding-test/all">All</a></li>
+          
+            <li><a href="/coding-test/sql">SQL</a></li>
+          
+            <li><a href="/coding-test/algorithm">Algorithm</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">Problem Solve</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="/problem-solve/all">All</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">Computer Science</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="/computer-science/all">All</a></li>
+          
+            <li><a href="/computer-science/data">Data Structure</a></li>
+          
+            <li><a href="/computer-science/network">Network</a></li>
+          
+            <li><a href="/computer-science/os">OS</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">Book Study</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="/book-study/all">All</a></li>
+          
+            <li><a href="/book-study/js-deepdive">Javascript Deep Dive</a></li>
+          
+            <li><a href="/book-study/clean-architecture">만들면서 배우는 클린 아키텍쳐</a></li>
+          
+            <li><a href="/book-study/practical-js">실용적인 자바스크립트</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="JavaScript Deepdive - this">
+    <meta itemprop="description" content="this 키워드">
+    <meta itemprop="datePublished" content="2024-02-10T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/book-study/Deepdive_about_this/" class="u-url" itemprop="url">JavaScript Deepdive - this
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          5 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
+              <ul class="toc__menu"><li><a href="#this-키워드">this 키워드</a><ul><li><a href="#객체-리터럴-방식">객체 리터럴 방식</a></li><li><a href="#생성자-함수-방식">생성자 함수 방식</a></li></ul></li><li><a href="#함수-호출-방식과-this-바인딩">함수 호출 방식과 this 바인딩</a><ul><li><a href="#일반-함수-호출">일반 함수 호출</a></li><li><a href="#메서드-호출">메서드 호출</a></li><li><a href="#생성자-함수-호출">생성자 함수 호출</a></li><li><a href="#functionprototypeapplycallbind-메서드에-의한-간접-호출">Function.prototype.apply/call/bind 메서드에 의한 간접 호출</a></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h2 id="this-키워드">this 키워드</h2>
+
+<ul>
+  <li>자신이 속한 객체 또는 자신이 생성할 인스턴스를 가리키는 특수한 식별자를 this라고 하며, 이는 인스턴스 식별자를 알 수 없을 때 객체 내부의 프로퍼티와 메소드를 참조하기 위해서 만들어졌다.</li>
+</ul>
+
+<h3 id="객체-리터럴-방식">객체 리터럴 방식</h3>
+
+<ul>
+  <li>아래와 같은 객체 리터럴 방식의 객체에서는 getDiameter() 메서드가 속한 circle를 가리키는 식별자를 재귀적으로 참조할 수 있다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">circle</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">radius</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+
+    <span class="nx">getDiameter</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="nx">circle</span><span class="p">.</span><span class="nx">radius</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">circle</span><span class="p">.</span><span class="nx">getDiameter</span><span class="p">());</span> <span class="c1">// 10</span>
+</code></pre></div></div>
+
+<ul>
+  <li>하지만 자기 자신이 속한 객체를 재귀적으로 참조하는 방식은 권장되지 않는다.</li>
+</ul>
+
+<h3 id="생성자-함수-방식">생성자 함수 방식</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">Circle</span><span class="p">(</span><span class="nx">radius</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 이 시점에는 생성자 함수 자신이 생성할 인스턴스를 가리키는 식별자를 알 수 없다.</span>
+    <span class="o">??</span><span class="p">?.</span><span class="nx">radius</span> <span class="o">=</span> <span class="nx">radius</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">Circle</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getDIameter</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// 마찬가지로 식별자를 알 수 없다.</span>
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="o">????</span><span class="p">.</span><span class="nx">radius</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 생성자 함수로 인스턴스를 생성하려면 먼저 생성자 함수를 정의해야 한다.</span>
+<span class="kd">const</span> <span class="nx">circle</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Circle</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>생성자 함수를 통해 인스턴스를 생성하려면, 먼저 생성자 함수가 존재해야 한다.</li>
+  <li>
+    <p>하지만 이 생성자 함수에서 프로퍼티, 메서드 추가를 위해서는 자신이 생성할 인스턴스를 참조할 수 있어야 한다.</p>
+  </li>
+  <li>
+    <p>이 모순을 해결하기 위해 this라는 특수한 식별자를 제공하여, 생성자 함수 내부에서 인스턴스를 생성하기 전에 인스턴스를 참조할 수 있다.</p>
+  </li>
+  <li>단, this가 가리키는 값, this 바인딩은 함수 호출 방식에 의해 동적으로 결정된다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">);</span> <span class="c1">// this : window</span>
+
+<span class="kd">function</span> <span class="nx">ex</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">);</span> <span class="c1">// this : window</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Lee</span><span class="dl">"</span><span class="p">,</span>
+  <span class="nx">getName</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">);</span> <span class="c1">// this : {name: "lee", getName: f}</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+
+<span class="kd">function</span> <span class="nx">Person</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">);</span> <span class="c1">// this : Person {name: "lee"}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">me</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="dl">"</span><span class="s2">lee</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>이 this는 객체의 프로퍼티나 메서드를 참조하기 위한 자기 참조 변수이므로, 일반적으로 객체의 메서드 내부 또는 생성자 함수 내부에서만 의미가 있다.</li>
+</ul>
+
+<h2 id="함수-호출-방식과-this-바인딩">함수 호출 방식과 this 바인딩</h2>
+
+<ul>
+  <li>this 바인딩은 함수 호출 방식, 즉 함수가 어떻게 호출되었는지에 따라 동적으로 결정된다.</li>
+  <li>렉시컬 스코프와 this 바인딩은 결정 시기가 다르다.
+    <ul>
+      <li>렉시컬 스코프 : 함수의 상위 스코프를 결정하는 방식. 함수 정의가 평가되어 함수 객체가 생성되는 시점에 상위 스코프를 결정한다.</li>
+      <li>this 바인딩 : 함수 호출 시점에 결정된다.</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">foo</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="nx">foo</span><span class="p">();</span> <span class="c1">// window</span>
+
+<span class="kd">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">foo</span> <span class="p">};</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">foo</span><span class="p">();</span> <span class="c1">// obj</span>
+
+<span class="k">new</span> <span class="nx">foo</span><span class="p">();</span> <span class="c1">// foo {} (instance)</span>
+</code></pre></div></div>
+
+<h3 id="일반-함수-호출">일반 함수 호출</h3>
+
+<ul>
+  <li>기본적으로 this에는 전역 객체가 바인딩 된다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">foo's this : </span><span class="dl">"</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span> <span class="c1">// window</span>
+  <span class="kd">function</span> <span class="nx">bar</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">bar's this : </span><span class="dl">"</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span> <span class="c1">// window</span>
+  <span class="p">}</span>
+  <span class="nx">bar</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="nx">foo</span><span class="p">();</span>
+</code></pre></div></div>
+
+<ul>
+  <li>전역 함수는 물론이고 중첩 함수를 일반 함수로 호출하면 함수 내부의 this에는 전역 객체가 바인딩된다.</li>
+  <li>this는 객체 내부의 프로퍼티와 메소드를 참조하기 위한 자기 참조 변수 이므로, 객체를 생성하지 않는 일반 함수에서 this는 의미가 없다. 따라서 strict mode 적용 시 이 경우에는 this에 undefined가 바인딩 된다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">value</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">value</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+  <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">foo's this : </span><span class="dl">"</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span> <span class="c1">// { value : 100, foo: f}</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">foo's this.value: </span><span class="dl">"</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span> <span class="c1">// 100;</span>
+
+    <span class="kd">function</span> <span class="nx">bar</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">bar's this : </span><span class="dl">"</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span> <span class="c1">// window</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">bar's this.value: </span><span class="dl">"</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span> <span class="c1">// 1</span>
+    <span class="p">}</span>
+    <span class="nx">bar</span><span class="p">();</span>
+    <span class="c1">// 메서드 내에서 정의한 중첩 함수도 일반 함수로 호출되면 중첩 함수 내부의 this에는 전역 객체가 바인딩 된다.</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+
+<span class="nx">obj</span><span class="p">.</span><span class="nx">foo</span><span class="p">();</span>
+</code></pre></div></div>
+
+<ul>
+  <li>콜백 함수가 일반 함수로 호출되면 콜백 함수의 내부 this에도 전역 객체가 바인딩 된다.</li>
+  <li>어떠한 함수라도 일반 함수로 호출되면 this에 전역 객체가 바인딩 된다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">value</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">value</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+  <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">foo's this: </span><span class="dl">"</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span> <span class="c1">// {value : 1, foo : f}</span>
+    <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">callback's this : </span><span class="dl">"</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span> <span class="c1">// window</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">callback's this.value: </span><span class="dl">"</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span> <span class="c1">// 1</span>
+    <span class="p">},</span> <span class="mi">100</span><span class="p">);</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+
+<span class="nx">obj</span><span class="p">.</span><span class="nx">foo</span><span class="p">();</span>
+</code></pre></div></div>
+
+<ul>
+  <li>콜백 함수는 보통 외부 함수를 돕는 헬퍼 함수의 역할을 하는데, 위의 예시처럼 외부함수와 콜백함수의 this가 일치하지 않는다는 것은 중첩 함수 또는 콜백 함수를 헬퍼 함수로 동작하기 어렵게 만든다.</li>
+  <li>이 두 this 바인딩을 일치시키기 위해 다음의 방법을 사용할 수 있다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 일치용 변수 that 사용</span>
+<span class="kd">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">value</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+  <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">that</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+    <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">that</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span> <span class="c1">// 100</span>
+    <span class="p">},</span> <span class="mi">100</span><span class="p">);</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+
+<span class="c1">// bind 함수를 이용한 명시적 this 바인딩</span>
+<span class="kd">var</span> <span class="nx">value</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">value</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+  <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">setTimeout</span><span class="p">(</span>
+      <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">balue</span><span class="p">);</span> <span class="c1">// 100</span>
+      <span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">),</span>
+      <span class="mi">100</span>
+    <span class="p">);</span> <span class="c1">// 콜백 함수에 명시적으로 this를 바인딩 한다.</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+
+<span class="c1">// 화살표 함수를 사용한 this 바인딩</span>
+<span class="kd">var</span> <span class="nx">value</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">value</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+  <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">),</span> <span class="mi">100</span><span class="p">);</span> <span class="c1">// 100</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">foo</span><span class="p">();</span>
+</code></pre></div></div>
+
+<h3 id="메서드-호출">메서드 호출</h3>
+
+<ul>
+  <li>메서드 내부의 this는 메서드를 소유한 객체가 아닌, 메서드 자신을 호출한 객체에 바인딩 된다. (???.method() -&gt; method에 바인딩)</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">employee</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">depart</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Dev</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">getDepart</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">depart</span><span class="p">;</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">employee</span><span class="p">.</span><span class="nx">getDepart</span><span class="p">());</span> <span class="c1">// Dev</span>
+</code></pre></div></div>
+
+<ul>
+  <li>위 예제의 getDepart 프로퍼티는 함수 객체를 가리키고 있을 뿐이며, 이 가리키는 함수 객체는 employee 객체에 포함된 것이 아닌 독립적으로 존재하는 별도의 객체다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">employee_2</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">depart</span><span class="p">:</span> <span class="dl">"</span><span class="s2">UID</span><span class="dl">"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">employee_2</span><span class="p">.</span><span class="nx">getDepart</span> <span class="o">=</span> <span class="nx">employee</span><span class="p">.</span><span class="nx">getDepart</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">employee</span><span class="p">.</span><span class="nx">getDepart</span><span class="p">());</span> <span class="c1">// UID</span>
+
+<span class="kd">const</span> <span class="nx">getDepart</span> <span class="o">=</span> <span class="nx">employee</span><span class="p">.</span><span class="nx">getDepart</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">getDepart</span><span class="p">());</span> <span class="c1">// ''</span>
+<span class="c1">// 일반 함수로 호출된 getDepart 함수 내부의 this.name은 브라우저 환경에서 window.name과 같다.</span>
+</code></pre></div></div>
+
+<ul>
+  <li>위의 예시와 같이, getDepart 프로퍼티가 가리키는 함수 객체, 즉 getDepart 메서드는 다른 객체의 프로퍼티에 할당하는 것으로 다른 객체의 메서드가 될 수도 있고 일반 변수에 할당하여 일반 함수로 호출될 수도 있다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">SoccerPlayer</span><span class="p">(</span><span class="nx">position</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">position</span> <span class="o">=</span> <span class="nx">position</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">SoccerPlayer</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getPosition</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">position</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">son</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SoccerPlayer</span><span class="p">(</span><span class="dl">"</span><span class="s2">Forward</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">son</span><span class="p">.</span><span class="nx">getPosition</span><span class="p">());</span> <span class="c1">// Forward</span>
+
+<span class="nx">SoccerPlayer</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">position</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Midfilder</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">SoccerPlayer</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getPosition</span><span class="p">());</span> <span class="c1">// Midfilder</span>
+</code></pre></div></div>
+
+<h3 id="생성자-함수-호출">생성자 함수 호출</h3>
+
+<ul>
+  <li>생성자 함수 내부의 this에는 생섬자 함수가 (미래에) 생성할 인스턴스가 바인딩 된다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">incomeTax</span><span class="p">(</span><span class="nx">salary</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">salary</span> <span class="o">=</span> <span class="nx">salary</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">getIncomeTax</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">salary</span> <span class="o">*</span> <span class="mf">0.1</span><span class="p">;</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">tax1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">incomeTax</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">tax2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">incomeTax</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">tax1</span><span class="p">.</span><span class="nx">getIncomeTax</span><span class="p">());</span> <span class="c1">// 2</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">tax2</span><span class="p">.</span><span class="nx">getIncomeTax</span><span class="p">());</span> <span class="c1">// 5</span>
+</code></pre></div></div>
+
+<h3 id="functionprototypeapplycallbind-메서드에-의한-간접-호출">Function.prototype.apply/call/bind 메서드에 의한 간접 호출</h3>
+
+<ul>
+  <li>
+    <p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Function/apply">prototype.apply,call,bind Referance</a></p>
+  </li>
+  <li>apply, call 메서드의 기본 기능은 이 메서드가 붙은 함수를 호출하는 것이다.</li>
+  <li>일반 호출과 다른점은, 호출한 함수의 this에 apply, call에 담기는 인자(객체)를 바인딩 한다는 것이다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">example</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">this : </span><span class="dl">"</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">arguments : </span><span class="dl">"</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">example</span><span class="dl">"</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">example</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="p">[</span><span class="dl">"</span><span class="s2">arg1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">arg2</span><span class="dl">"</span><span class="p">]));</span> <span class="c1">// this : {name : 'example'}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">example</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="dl">"</span><span class="s2">arg1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">arg2</span><span class="dl">"</span><span class="p">));</span> <span class="c1">// arguments : ['arg1', 'arg2'];</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Function.prototype.bind 메서드는 apply, call 메서드와 다르게 함수를 호출하지 않는다. 다만 인수로 전달한 값을 호출된 함수의 this에 바인딩 해 반환한다.</li>
+  <li>bind 메서드는 메서드의 this와 내부의 중첩 함수 또는 콜백 함수의 this가 불일치하는 문제를 해결하기 위해 사용된다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">ex</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">innerName</span><span class="dl">"</span><span class="p">,</span>
+  <span class="nx">getName</span><span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">callback</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+
+<span class="nx">ex</span><span class="p">.</span><span class="nx">getName</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`'Hello! my name is </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2"> !'`</span><span class="p">);</span> <span class="c1">// 'Hello! my name is !'</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<ul>
+  <li>객체.메소드() 의 경우 메소드의 this는 호출된 객체를 가리킨다. 때문에 ex.getName 메소드 실행 시 this.name에 innerName이 바인딩 되어야 할것 같지만</li>
+  <li>setTimeout의 콜백 함수가 일반 함수로서 호출된 시점에는 this에는 전역 객체 window가 바인딩 된다.</li>
+  <li>callback 함수는 getName을 돕는 헬퍼 함수 역할을 하지만, 내외부의 this가 불일치 하여 문맥상 문제가 발생한다. 이 this를 일치 시키기 위해 bind 메서드를 사용할 수 있다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">ex</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">innerName</span><span class="dl">"</span><span class="p">,</span>
+  <span class="nx">getName</span><span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">callback</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">),</span> <span class="mi">100</span><span class="p">);</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+
+<span class="nx">ex</span><span class="p">.</span><span class="nx">getName</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`'Hello! my name is </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2"> !'`</span><span class="p">);</span> <span class="c1">// 'Hello! my name is innerName !';</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<ul>
+  <li>bind 메서드는 인자로 받은 값을 호출된 함수의 this에 바인딩 시키고 그 함수를 리턴한다.</li>
+  <li>위의 예시와는 다르게 bind 메소드를 통해 강제로 getName 메서드 내부에서의 this를 바인딩 시켰기 때문에, 독립적으로 콜백 함수가 일반 함수로서 실행 되더라도 언제나 this에는 ex 객체가 바인딩 된다.</li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#js-deepdive" class="page__taxonomy-item p-category" rel="tag">js-deepdive</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#book-study" class="page__taxonomy-item p-category" rel="tag">book-study</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2024-02-10T00:00:00+09:00">February 10, 2024</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=JavaScript+Deepdive+-+this%20http%3A%2F%2Flocalhost%3A4000%2Fbook-study%2FDeepdive_about_this%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fbook-study%2FDeepdive_about_this%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fbook-study%2FDeepdive_about_this%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/book-study/Practical_js_function/" class="pagination--pager" title="실용적인 자바스크립트 - Function
+">이전</a>
+    
+    
+      <a href="/book-study/Deepdive_builtinObject/" class="pagination--pager" title="JavaScript Deepdive - Built-in Object
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/coding-test/%EB%A9%98%ED%86%A0%EB%A7%81/" rel="permalink">알고리즘 문제풀이 - 멘토링
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          최대 1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">알고리즘 문제풀이 연습 - 6
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/book-study/Deepdive_builtinObject/" rel="permalink">JavaScript Deepdive - Built-in Object
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">자바스크립트 객체의 분류
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/book-study/Practical_js_function/" rel="permalink">실용적인 자바스크립트 - Function
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Rest Parameter(나머지 파라미터)
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/book-study/Practical_js_basic/" rel="permalink">실용적인 자바스크립트 - Basic
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          5 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">폴리필(Polyfill)
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="malito:mynameiskuun@gmail.com" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+          <li><a href="https://github.com/mynameiskuun" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> Github</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2024 mynameiskuun. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'https://github.com/mynameiskuun/mynameiskuun.github.io');
+    script.setAttribute('issue-term', 'pathname');
+    
+    script.setAttribute('theme', 'github-light');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+
+  </body>
+</html>

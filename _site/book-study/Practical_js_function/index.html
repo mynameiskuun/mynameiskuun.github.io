@@ -1,0 +1,1089 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>실용적인 자바스크립트 - Function - 오늘보다 나은 내일</title>
+<meta name="description" content="Rest Parameter(나머지 파라미터)">
+
+
+  <meta name="author" content="mynameiskuun">
+  
+  <meta property="article:author" content="mynameiskuun">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="오늘보다 나은 내일">
+<meta property="og:title" content="실용적인 자바스크립트 - Function">
+<meta property="og:url" content="http://localhost:4000/book-study/Practical_js_function/">
+
+
+  <meta property="og:description" content="Rest Parameter(나머지 파라미터)">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2024-02-02T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/book-study/Practical_js_function/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "mynameiskuun",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="오늘보다 나은 내일 Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<link rel="shortcut icon" href="/assets/images/favicon(32x32).png" />
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          오늘보다 나은 내일
+          
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/profile.jpg" alt="mynameiskuun" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">mynameiskuun</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p><strong>학습 오류 수정을 위한 포스팅</strong></p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:mynameiskuun@gmail.com" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/mynameiskuun" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+    
+      
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">토글 메뉴</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <span class="nav__sub-title">DEV</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="/dev/all">All</a></li>
+          
+            <li><a href="/dev/java">JAVA</a></li>
+          
+            <li><a href="/dev/database">Database</a></li>
+          
+            <li><a href="/dev/javascript">JavaScript</a></li>
+          
+            <li><a href="/dev/devops">DevOps</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">Coding Test</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="/coding-test/all">All</a></li>
+          
+            <li><a href="/coding-test/sql">SQL</a></li>
+          
+            <li><a href="/coding-test/algorithm">Algorithm</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">Problem Solve</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="/problem-solve/all">All</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">Computer Science</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="/computer-science/all">All</a></li>
+          
+            <li><a href="/computer-science/data">Data Structure</a></li>
+          
+            <li><a href="/computer-science/network">Network</a></li>
+          
+            <li><a href="/computer-science/os">OS</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">Book Study</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="/book-study/all">All</a></li>
+          
+            <li><a href="/book-study/js-deepdive">Javascript Deep Dive</a></li>
+          
+            <li><a href="/book-study/clean-architecture">만들면서 배우는 클린 아키텍쳐</a></li>
+          
+            <li><a href="/book-study/practical-js">실용적인 자바스크립트</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="실용적인 자바스크립트 - Function">
+    <meta itemprop="description" content="Rest Parameter(나머지 파라미터)">
+    <meta itemprop="datePublished" content="2024-02-02T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/book-study/Practical_js_function/" class="u-url" itemprop="url">실용적인 자바스크립트 - Function
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
+              <ul class="toc__menu"><li><a href="#rest-parameter나머지-파라미터">Rest Parameter(나머지 파라미터)</a></li><li><a href="#arrow-function화살표-함수">Arrow Function(화살표 함수)</a><ul><li><a href="#화살표-함수의-주요-특징">화살표 함수의 주요 특징</a></li></ul></li><li><a href="#일급-함수-고차-함수">일급 함수, 고차 함수</a></li><li><a href="#변수의-스코프와-스코프-체인">변수의 스코프와 스코프 체인</a></li><li><a href="#함수-표현과-함수-선언의-착각">함수 표현과 함수 선언의 착각</a></li><li><a href="#함수-표현과-클로저">함수 표현과 클로저</a></li><li><a href="#인터페이스-함수">인터페이스 함수</a></li><li><a href="#커링currying-함수">커링(Currying) 함수</a></li><li><a href="#재귀-커링">재귀 커링</a></li><li><a href="#믹스인-함수">믹스인 함수</a></li><li><a href="#디바운스-함수">디바운스 함수</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h3 id="rest-parameter나머지-파라미터">Rest Parameter(나머지 파라미터)</h3>
+
+<ul>
+  <li>함수의 마지막 파라미터에 마침표 3개 (…)를 붙여 사실상 무한대의 파라미터를 사용할 수 있게 합니다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">example</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="p">....</span><span class="nx">C</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+ <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">,</span><span class="nx">C</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>위의 경우, C 가변인자는 무한대의 파라미터를 받을 수 있기 때문에 배열로 출력 됩니다.</li>
+</ul>
+
+<hr />
+
+<h3 id="arrow-function화살표-함수">Arrow Function(화살표 함수)</h3>
+
+<ul>
+  <li>자바의 람다 표현식과 유사한 것으로, 예시를 통해 쉽게 이해할 수 있습니다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">화살표</span> <span class="nx">함수</span> <span class="nx">적용</span>
+
+<span class="kd">var</span> <span class="nx">example</span> <span class="o">=</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<h4 id="화살표-함수의-주요-특징">화살표 함수의 주요 특징</h4>
+
+<ul>
+  <li>함수 안에 super, this 바인딩이 없음.</li>
+  <li>new 키워드 생성자를 사용할 수 있음.</li>
+  <li>블록 스코프를 사용.</li>
+</ul>
+
+<blockquote>
+  <p>화살표 함수 사용 시 유의사항</p>
+</blockquote>
+
+<ul>
+  <li>=&gt; 화살표는 항상 변수 선언부와 동일한 row에 위치해야 합니다.</li>
+</ul>
+
+<hr />
+
+<h3 id="일급-함수-고차-함수">일급 함수, 고차 함수</h3>
+
+<blockquote>
+  <p>일급 함수란, 다른 함수의 매개변수로 삽입되거나 return의 직접적인 대상이 될 수 있는 함수를 말합니다.</p>
+</blockquote>
+
+<hr />
+
+<h3 id="변수의-스코프와-스코프-체인">변수의 스코프와 스코프 체인</h3>
+
+<blockquote>
+  <p>스코프(scope)란 ? 현재 실행 코드가 접근할 수 있는 선언되 변수의 범위를 말합니다. 반대로 말하면 변수가 영향을 미치는 코드의 범위입니다.</p>
+</blockquote>
+
+<ul>
+  <li>자바스크립트의 3개의 스코프 타입은 각각 다른 스코프를 사용합니다.</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">타입</th>
+      <th style="text-align: center">스코프</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">var</td>
+      <td style="text-align: center">함수 스코프</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">let</td>
+      <td style="text-align: center">블록 스코프</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">const</td>
+      <td style="text-align: center">블록 스코프</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>함수 스코프 체인의 대표적인 예시</li>
+</ul>
+
+<p>```js var a = 1; var b = 5;
+function outerFunc() {
+  function innerFunc() {
+    a = b;
+  }
+  console.log(a); //1
+  a = 3;
+  b = 4;
+  innerFunc();
+  console.log(a); //4
+  var b = 2;
+}
+outerFunc();
+console.log(a, b); //4,5</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+### 함수 선언과 함수 표현
+
+- 함수 선언 예시
+
+```js
+function example(a, b) {
+  console.log(a);
+  console.log(b);
+}
+</code></pre></div></div>
+
+<ul>
+  <li>함수 표현 예시</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">example</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">funcName</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="dl">"</span><span class="s2">example</span><span class="dl">"</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="함수-표현과-함수-선언의-착각">함수 표현과 함수 선언의 착각</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">nameFunc</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">nameFunc!</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>위의 경우는 함수 표현입니다.</p>
+</blockquote>
+
+<ul>
+  <li>함수 선언 몸체에 함수 이름이 있어도(nameFunc()) 변수에 대입을 하면(a) 함수 표현으로 선언됩니다.</li>
+  <li>즉, nameFunc()은 함수가 아니기 때문에 사용할 수 없고, 함수 표현 변수명으로 호출해야(a()) 함수가 실행됩니다.</li>
+</ul>
+
+<hr />
+
+<h3 id="함수-표현과-클로저">함수 표현과 클로저</h3>
+
+<ul>
+  <li>호이스팅이 지원되는 함수 선언을 사용하는것이 언뜻 보면 더 좋아보이지만, 이로 인해 여러개의 함수들이 호이스팅 되면 함수의 스코프 이슈를 피하기가 함들어집니다.</li>
+  <li>이와 더불어 함수 표현을 사용하는 이유는 함수 표현이 클로저를 지원하기 때문입니다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">buttons</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">.button</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">i</span><span class="p">;</span>
+<span class="k">for</span><span class="p">(</span><span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="o">&gt;</span><span class="nx">buttons</span><span class="p">.</span><span class="nx">length</span><span class="p">;,</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">buttons</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">onclick</span> <span class="o">=</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">index</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">i</span><span class="p">)};</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>위의 코드에서, i의 값에 따라 각각 1,2,3이 출력되야 할것 같지만, 루프문이 모두 실행된 후의 값인 i=3으로 모두 출력됩니다.</li>
+  <li>버튼 클릭 시, 각각의 i를 출력시키려면 아래의 함수 표현(클로저 특성을 지닌)을 사용해야 합니다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">buttons</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">.button</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">clickHandler</span> <span class="o">=</span> <span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">index : </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">index</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">i</span><span class="p">;</span>
+<span class="k">for</span><span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">buttons</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">button</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">onclick</span> <span class="o">=</span> <span class="nx">clickHandler</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="인터페이스-함수">인터페이스 함수</h3>
+
+<ul>
+  <li>자바스크립트의 객체 작성 기법중 하나.</li>
+  <li>한 개 이상의 함수를 함수로 다시 감싸서 객체, 정확히는 객체 리터럴을 반환하는 래퍼(Wrapper) 함수의 역할을 하는 함수를 말합니다.</li>
+  <li>return으로 함수 안에 정의한 함수들의 이름을 담은 객체 리터럴을 반환한다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">math</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">function</span> <span class="nx">plus</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kd">function</span> <span class="nx">minus</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">-</span> <span class="nx">b</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kd">function</span> <span class="nx">multiple</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">*</span> <span class="nx">b</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kd">function</span> <span class="nx">divide</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">/</span> <span class="nx">b</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="p">{</span> <span class="nx">plus</span><span class="p">,</span> <span class="nx">minus</span><span class="p">,</span> <span class="nx">multiple</span><span class="p">,</span> <span class="nx">divide</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">math</span> <span class="o">=</span> <span class="nx">math</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">math</span><span class="p">.</span><span class="nx">plus</span><span class="p">());</span> <span class="c1">// 150</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">math</span><span class="p">.</span><span class="nx">minus</span><span class="p">());</span> <span class="c1">// 50</span>
+</code></pre></div></div>
+
+<h3 id="커링currying-함수">커링(Currying) 함수</h3>
+
+<ul>
+  <li>단일 호출로 처리하는 여러 파라미터를 가진 함수를 단일 파라미터를 사용하는 중첩 함수로 분리해서 사용하는 기법.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>Currying ver</p>
+</blockquote>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="mi">2</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>부분 실행하는 단계를 분리 해 코드를 나눌 수 있지만, 파라미터 개수가 많고 중첩이 깊어지면 콜 스택 유지에 메모리를 더 사용하여 실행 속도 측면에서 불리해짐. 또한 중첩이 깊어지면 가독성 하락.</p>
+  </li>
+  <li>
+    <p>화살표 함수를 이용해 짧은 코드로도 작성 가능.</p>
+  </li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">sum</span> <span class="o">=</span> <span class="p">(</span><span class="nx">num1</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="nx">num2</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="nx">num3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">num1</span> <span class="o">+</span> <span class="nx">num2</span> <span class="o">+</span> <span class="nx">num3</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="재귀-커링">재귀 커링</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">b</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">a</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">)());</span> <span class="c1">// 1</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="mi">2</span><span class="p">)());</span> <span class="c1">// 3</span>
+</code></pre></div></div>
+
+<ul>
+  <li>마지막 고차함수를 즉시실행 시키기 위해 빈 괄호를 넣으며, 재귀 커링 함수는 반드시 이렇게 구현해야 함.</li>
+</ul>
+
+<h3 id="믹스인-함수">믹스인 함수</h3>
+
+<ul>
+  <li>단일 객체 상속의 한계를 넘어, 여러 객체에서 메소드나 속성을 상속받을 수 있게 하는 함수.</li>
+  <li>객체의 메소드, 속성을 모두 대상 객체로 복사 하며, 이름이 중복되면 값을 덮어씀.</li>
+  <li>jQuery의 $.extend 메소드와 유사한 기능.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">mixin</span><span class="p">(</span><span class="nx">sourceObj</span><span class="p">,</span> <span class="nx">targetObj</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">(</span><span class="nx">sourceObj</span><span class="p">,</span> <span class="nx">targetObj</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">sam</span><span class="dl">"</span><span class="p">,</span> <span class="na">age</span><span class="p">:</span> <span class="mi">20</span> <span class="p">};</span>
+<span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="p">{</span> <span class="na">age</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span> <span class="na">addr</span><span class="p">:</span> <span class="dl">"</span><span class="s2">seoul</span><span class="dl">"</span> <span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="nx">mixin</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">c</span><span class="p">);</span> <span class="c1">// {name : "sam", age : 21, addr : "seoul"};</span>
+</code></pre></div></div>
+
+<h3 id="디바운스-함수">디바운스 함수</h3>
+
+<ul>
+  <li>디바운싱 이란, 동일 함수의 잦은 반복 실행을 차단하고 마지막 호출한 것만 실행되도록 하는 코딩 패턴.
+    <ul>
+      <li>검색어 입력 시, 매 키보드 입력 마다 api 호출이 된다면?</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kd">function</span> <span class="nx">debounceFunc</span><span class="p">(</span><span class="nx">callback</span><span class="p">,</span> <span class="nx">delay</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">timer</span><span class="p">;</span>
+
+  <span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="c1">// 디바운스 함수</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">timer</span><span class="p">)</span> <span class="nx">clearTimeout</span><span class="p">(</span><span class="nx">timer</span><span class="p">);</span>
+    <span class="nx">timer</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">{</span><span class="nx">callback</span><span class="p">,</span> <span class="nx">delay</span><span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">runner</span><span class="p">()</span> <span class="p">{</span> <span class="c1">// 콜백 함수</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">df</span> <span class="o">=</span> <span class="nx">debounceFunc</span><span class="p">(</span><span class="nx">runner</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
+</code></pre></div></div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#practical-js" class="page__taxonomy-item p-category" rel="tag">practical-js</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#book-study" class="page__taxonomy-item p-category" rel="tag">book-study</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2024-02-02T00:00:00+09:00">February 2, 2024</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%EC%8B%A4%EC%9A%A9%EC%A0%81%EC%9D%B8+%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8+-+Function%20http%3A%2F%2Flocalhost%3A4000%2Fbook-study%2FPractical_js_function%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fbook-study%2FPractical_js_function%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fbook-study%2FPractical_js_function%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/book-study/Practical_js_basic/" class="pagination--pager" title="실용적인 자바스크립트 - Basic
+">이전</a>
+    
+    
+      <a href="/book-study/Deepdive_about_this/" class="pagination--pager" title="JavaScript Deepdive - this
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/coding-test/%EB%A9%98%ED%86%A0%EB%A7%81/" rel="permalink">알고리즘 문제풀이 - 멘토링
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          최대 1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">알고리즘 문제풀이 연습 - 6
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/book-study/Deepdive_builtinObject/" rel="permalink">JavaScript Deepdive - Built-in Object
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">자바스크립트 객체의 분류
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/book-study/Deepdive_about_this/" rel="permalink">JavaScript Deepdive - this
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          5 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">this 키워드
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/book-study/Practical_js_basic/" rel="permalink">실용적인 자바스크립트 - Basic
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          5 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">폴리필(Polyfill)
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="malito:mynameiskuun@gmail.com" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+          <li><a href="https://github.com/mynameiskuun" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> Github</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2024 mynameiskuun. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'https://github.com/mynameiskuun/mynameiskuun.github.io');
+    script.setAttribute('issue-term', 'pathname');
+    
+    script.setAttribute('theme', 'github-light');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,1037 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>JavaScript Deepdive - Built-in Object - 오늘보다 나은 내일</title>
+<meta name="description" content="자바스크립트 객체의 분류">
+
+
+  <meta name="author" content="mynameiskuun">
+  
+  <meta property="article:author" content="mynameiskuun">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="오늘보다 나은 내일">
+<meta property="og:title" content="JavaScript Deepdive - Built-in Object">
+<meta property="og:url" content="http://localhost:4000/book-study/Deepdive_builtinObject/">
+
+
+  <meta property="og:description" content="자바스크립트 객체의 분류">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2024-02-10T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/book-study/Deepdive_builtinObject/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "mynameiskuun",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="오늘보다 나은 내일 Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<link rel="shortcut icon" href="/assets/images/favicon(32x32).png" />
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          오늘보다 나은 내일
+          
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/profile.jpg" alt="mynameiskuun" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">mynameiskuun</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p><strong>학습 오류 수정을 위한 포스팅</strong></p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:mynameiskuun@gmail.com" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/mynameiskuun" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+    
+      
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">토글 메뉴</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <span class="nav__sub-title">DEV</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="/dev/all">All</a></li>
+          
+            <li><a href="/dev/java">JAVA</a></li>
+          
+            <li><a href="/dev/database">Database</a></li>
+          
+            <li><a href="/dev/javascript">JavaScript</a></li>
+          
+            <li><a href="/dev/devops">DevOps</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">Coding Test</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="/coding-test/all">All</a></li>
+          
+            <li><a href="/coding-test/sql">SQL</a></li>
+          
+            <li><a href="/coding-test/algorithm">Algorithm</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">Problem Solve</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="/problem-solve/all">All</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">Computer Science</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="/computer-science/all">All</a></li>
+          
+            <li><a href="/computer-science/data">Data Structure</a></li>
+          
+            <li><a href="/computer-science/network">Network</a></li>
+          
+            <li><a href="/computer-science/os">OS</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">Book Study</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="/book-study/all">All</a></li>
+          
+            <li><a href="/book-study/js-deepdive">Javascript Deep Dive</a></li>
+          
+            <li><a href="/book-study/clean-architecture">만들면서 배우는 클린 아키텍쳐</a></li>
+          
+            <li><a href="/book-study/practical-js">실용적인 자바스크립트</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="JavaScript Deepdive - Built-in Object">
+    <meta itemprop="description" content="자바스크립트 객체의 분류">
+    <meta itemprop="datePublished" content="2024-02-10T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/book-study/Deepdive_builtinObject/" class="u-url" itemprop="url">JavaScript Deepdive - Built-in Object
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
+              <ul class="toc__menu"><li><a href="#자바스크립트-객체의-분류">자바스크립트 객체의 분류</a></li><li><a href="#표준-빌트인-객체">표준 빌트인 객체</a></li><li><a href="#원시값과-래퍼-객체">원시값과 래퍼 객체</a><ul><li><a href="#string외에-number-boolean도-동일한-원리로-동작하며-생성자-함수를-통해-인스턴스를-생성하지-않아도-객체처럼-사용할-수-있다-때문에-string-number-boolean은-인스턴스-생성이-권장되지-않는다">String외에 Number, Boolean도 동일한 원리로 동작하며, 생성자 함수를 통해 인스턴스를 생성하지 않아도 객체처럼 사용할 수 있다. 때문에 String, Number, Boolean은 인스턴스 생성이 권장되지 않는다.</a></li></ul></li><li><a href="#전역-객체">전역 객체</a><ul><li><a href="#전역-객체의-특징은-다음과-같다">전역 객체의 특징은 다음과 같다.</a></li></ul></li><li><a href="#빌트인-전역-프로퍼티">빌트인 전역 프로퍼티</a><ul><li><a href="#infinity">Infinity</a></li><li><a href="#nan">NaN</a></li><li><a href="#undifined">undifined</a></li></ul></li><li><a href="#빌트인-전역-함수">빌트인 전역 함수</a><ul><li><a href="#eval">eval</a></li><li><a href="#isfinite">isFinite</a></li><li><a href="#isnan">isNaN</a></li><li><a href="#parsefloat-parseint">parseFloat, parseInt</a></li><li><a href="#encodeuri-decodeuri">encodeURI, decodeURI</a></li><li><a href="#encodeuricomponent-decodeuricomponent">encodeURIComponent, decodeURIComponent</a></li></ul></li><li><a href="#암묵적-전역">암묵적 전역</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h2 id="자바스크립트-객체의-분류">자바스크립트 객체의 분류</h2>
+
+<blockquote>
+  <p>자바스크립트 객체는 다음과 같이 크게 3개의 객체로 분류할 수 있다.</p>
+</blockquote>
+
+<ul>
+  <li>표준 빌트인 객체
+    <ul>
+      <li>ECMAScript 사양에 정의된 객체를 말하며, app 전역의 공통 기능을 제공한다.
+        <ul>
+          <li><a href="https://wormwlrm.github.io/2018/10/03/What-is-the-difference-between-javascript-and-ecmascript.html">ECMAScript와 JavaScript는 무슨 차이점이 있을까?</a></li>
+        </ul>
+      </li>
+      <li>전역 객체의 프로퍼티로서 제공되기 때문에, 별도의 선언 없이 전역 변수처럼 언제나 참조 가능.</li>
+    </ul>
+  </li>
+  <li>호스트 객체
+    <ul>
+      <li>ECMAScript 사양에 정의되어 있지않지만, JS 실행환경(브라우저 or Node.js)에서 추가로 제공하는 객체.</li>
+      <li>브라우저 제공 객체
+        <ul>
+          <li>DOM, BOM, Canvas, XMLHttpRequest, fetch, requestAnimationFrame, SVG 등의 클라이언트 사이드 Web API를 호스트 객체로 제공하고, Node.js 환경에서는 Node.js 고유의 API를 호스트 객체로 제공한다.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>사용자 정의 객체</p>
+
+    <ul>
+      <li>용어 그대로 사용자가 직접 정의한 객체.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="표준-빌트인-객체">표준 빌트인 객체</h2>
+
+<ul>
+  <li>Object, String, Number, Boolean, Symbol, Date, Math, RegExp, Array, Map/Set, Function, Promise, Proxy, JSON 등 40여개의 표준 빌트인 객체를 제공한다.</li>
+  <li>Math, Reflect, JSON -&gt; 비 생성자 함수. 인스턴스 생성 불가능. 정적 메서드만 제공.</li>
+  <li>이외의 표준 빌트인 객체 -&gt; 생성자 함수. 인스턴스 생성 가능. 정적 메소드 및 프로토타입 메서드 제공.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">strObj</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">String</span><span class="p">(</span><span class="dl">'</span><span class="s1">Uber</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// String {"Uber"}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">strObj</span><span class="p">);</span> <span class="c1">// object</span>
+
+<span class="kd">const</span> <span class="nx">funObj</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Function</span><span class="p">(</span><span class="dl">'</span><span class="s1">x</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">return x * x</span><span class="dl">'</span><span class="p">);</span> <span class="nx">f</span> <span class="nx">annoymous</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">funObj</span><span class="p">);</span> <span class="c1">// function</span>
+</code></pre></div></div>
+
+<ul>
+  <li>각 생성자 함수를 통해 생성된 인스턴스의 프로토타입은 각 생성자 객체의 prototype 프로퍼티에 바인딩된 객체다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">strObj</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">String</span><span class="p">(</span><span class="dl">"</span><span class="s2">Lee</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">getPrototypeOf</span><span class="p">(</span><span class="nx">strObj</span><span class="p">)</span> <span class="o">===</span> <span class="nb">String</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span> <span class="c1">// true</span>
+</code></pre></div></div>
+
+<h2 id="원시값과-래퍼-객체">원시값과 래퍼 객체</h2>
+
+<blockquote>
+  <p>문자열이나 숫자, 불리언 등의 원시값이 있는데도 String, Number, Boolean 등의 표준 빌트인 생성자 함수가 존재하는 이유는?</p>
+</blockquote>
+
+<ul>
+  <li>원시값은 객체가 아니므로 프로퍼티나 메서드를 가질 수 없는데도, 아래에서 원시값은 마치 객체처럼 동작한다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">str</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">str</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span> <span class="c1">// 5</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>이는 원시값인 문자열, 숫자, 불리언 값을 객체처럼 마침표 표기법으로 접근 시, 자바스크립트 엔진이 일시적으로 원시값과 연관된 객체를 생성하여 이 객체로 변환해서 해당 함수를 호출한뒤, 다시 원시값으로 되돌리기 때문이다.</p>
+  </li>
+  <li>
+    <p>이처럼 원시값에 객체처럼 접근하면 일시적으로 생성되는 임시 객체를 래퍼 객체(Wrapper object) 라고 한다.</p>
+  </li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// str.name이 undefined인 이유</span>
+
+<span class="kd">const</span> <span class="nx">str</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">example</span><span class="dl">"</span><span class="p">;</span> <span class="c1">// 1</span>
+<span class="nx">str</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">;</span> <span class="c1">// 2</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">str</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span> <span class="c1">// undefined // 3</span>
+</code></pre></div></div>
+
+<ul>
+  <li>1에서 원시값 선언 및 초기화가 이루어진다.</li>
+  <li>
+    <p>2에서 마침표 표기법으로 name에 접근하면, ‘example’ 값과 연관된 객체(String)를 일시적으로 생성하여 str.name에 접근하게 해준다.</p>
+  </li>
+  <li>
+    <p>이 때 기존의 원시값은 래퍼객체의 [[StringData]] 내부 슬롯에 할당된다.</p>
+  </li>
+  <li>
+    <p>3에서 다시 str.name에 접근하면, 이 때 새롭게 생성되는 일시적 래퍼 객체는 2에서 생성된 래퍼객체와 다른 객체이다. (2에서 생성된 래퍼객체는 더이상 호출되지 않으므로 즉시 GC에 의해 수집됨.)</p>
+  </li>
+  <li>때문에 3에서 str.name은 undefined 상태가 된다.</li>
+</ul>
+
+<h3 id="string외에-number-boolean도-동일한-원리로-동작하며-생성자-함수를-통해-인스턴스를-생성하지-않아도-객체처럼-사용할-수-있다-때문에-string-number-boolean은-인스턴스-생성이-권장되지-않는다">String외에 Number, Boolean도 동일한 원리로 동작하며, 생성자 함수를 통해 인스턴스를 생성하지 않아도 객체처럼 사용할 수 있다. 때문에 String, Number, Boolean은 인스턴스 생성이 권장되지 않는다.</h3>
+
+<h2 id="전역-객체">전역 객체</h2>
+
+<blockquote>
+  <p>전역 객체는 코드가 실행되기 이전 단계에 JS 엔진에 의해 어떤 객체보다도 먼저 생성되는 특수한 객체이며, 어떤 객체에도 속하지 않은 최상위 객체다.</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>이 전역 객체는 환경에 따라 지칭하는 이름이 제각각이다. 브라우저 환경에서는 window, self, this, frames / Node.js 환경에서는 global이 전역 객체를 가리킨다.</p>
+  </li>
+  <li>
+    <p>ES11에서는 이를 통일하기 위해 globalThis를 표준 사양으로 지정했다.</p>
+  </li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">globalThis</span> <span class="o">===</span> <span class="nb">window</span><span class="p">;</span> <span class="c1">// true</span>
+<span class="nx">globalThis</span> <span class="o">===</span> <span class="k">this</span><span class="p">;</span> <span class="c1">// true</span>
+<span class="nx">globalThis</span> <span class="o">===</span> <span class="nb">global</span><span class="p">;</span> <span class="c1">// true - Node.js</span>
+<span class="nx">globalThis</span> <span class="o">===</span> <span class="k">this</span><span class="p">;</span> <span class="c1">// true - Node.js</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>전역 객체는 표준 빌트인 객체(Object, String, Number 등)와 환경에 따른 호스트 객체(Client Web API or Node.js 호스트 API), 그리고 var 키워드로 선언한 전역 변수와 전역 함수를 프로퍼티로 갖는다.</p>
+  </li>
+  <li>전역 객체는 계층적 구조상 어떤 객체에도 속하지 않은 모든 빌트인 객체(표준 빌트인 객체와 호스트 객체)의 최상위 객체다.</li>
+  <li>하지만 이는 프로토타입 상속 관계 상 최상위 객체라는 의미는 아니다. 전역 객체 자신은 어떤 객체의 프로퍼티도 아니며, 객체의 계층적 구조상 표준 빌트인 객체와 호스트 객체를 프로퍼티로 소유한다는 것을 말한다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">str</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">example</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">str</span><span class="p">);</span> <span class="c1">// example</span>
+</code></pre></div></div>
+
+<h3 id="전역-객체의-특징은-다음과-같다">전역 객체의 특징은 다음과 같다.</h3>
+
+<ul>
+  <li>개발자가 의도적으로 생성할 수 없다. 즉, 전역 객체를 생성할 수 있는 생성자 함수가 제공되지 않는다.</li>
+  <li>전역 객체의 프로퍼티를 참조할 때, window(or global) 생략 가능.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 문자열 F를 16진수로 해석하여 10진수로 변환하여 반환한다.</span>
+<span class="nb">window</span><span class="p">.</span><span class="nb">parseInt</span><span class="p">(</span><span class="dl">"</span><span class="s2">F</span><span class="dl">"</span><span class="p">,</span> <span class="mi">16</span><span class="p">);</span> <span class="c1">// 15</span>
+
+<span class="c1">// 전역 객체의 프로퍼티는 window 생략 가능.</span>
+<span class="nb">parseInt</span><span class="p">(</span><span class="dl">"</span><span class="s2">F</span><span class="dl">"</span><span class="p">,</span> <span class="mi">16</span><span class="p">);</span> <span class="c1">// 15</span>
+
+<span class="nb">window</span><span class="p">.</span><span class="nb">parseInt</span> <span class="o">===</span> <span class="nb">parseInt</span><span class="p">;</span> <span class="c1">// true</span>
+</code></pre></div></div>
+
+<ul>
+  <li>전역 객체는 모든 표준 빌트인 객체를 프로퍼티로 가지고 있다.</li>
+  <li>자바 스크립트 실행 환경(브라우자 or Node.js)에 따라 추가적으로 프로퍼티와 메서드를 갖는다.</li>
+  <li>var 키워드로 선언한 전역 변수와 선언하지 않은 변수에 값을 할당한 암묵적 전역, 그리고 전역 함수는 객체의 프로퍼티가 된다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">foo</span><span class="p">);</span> <span class="c1">// 1</span>
+
+<span class="nx">bar</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">bar</span><span class="p">);</span> <span class="c1">// 2</span>
+
+<span class="kd">function</span> <span class="nx">baz</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="mi">3</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">baz</span><span class="p">());</span> <span class="c1">// 3</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>let, const는 전역 객체 프로퍼티가 아니다. 이들은 보이지 않는 개념적인 블록(전역 렉시컬 환경의 선언적 환경 레코드) 내에 존재하게 된다.</p>
+  </li>
+  <li>
+    <p>브라우저 환경의 모든 JS 코드는 하나의 전역 객체 window를 공유한다. 여러개의 script 태그를 통해 JS 코드를 분리해도 마찬가지.</p>
+  </li>
+</ul>
+
+<h2 id="빌트인-전역-프로퍼티">빌트인 전역 프로퍼티</h2>
+
+<h3 id="infinity">Infinity</h3>
+
+<ul>
+  <li>무한대를 나타내는 숫자값.</li>
+</ul>
+
+<h3 id="nan">NaN</h3>
+
+<ul>
+  <li>숫자가 아님을 나타내는 NaN을 갖는다. NaN === Number.NaN</li>
+</ul>
+
+<h3 id="undifined">undifined</h3>
+
+<h2 id="빌트인-전역-함수">빌트인 전역 함수</h2>
+
+<ul>
+  <li>app 전역에서 호출할 수 있는 빌트인 함수로서 전역 객체의 메서드다.</li>
+</ul>
+
+<h3 id="eval">eval</h3>
+
+<ul>
+  <li>안티패턴. 사용 안하는걸 권장.</li>
+</ul>
+
+<h3 id="isfinite">isFinite</h3>
+
+<ul>
+  <li>인수의 유한수 / 무한수 여부 검증 및 boolean 반환.</li>
+</ul>
+
+<h3 id="isnan">isNaN</h3>
+
+<h3 id="parsefloat-parseint">parseFloat, parseInt</h3>
+
+<h3 id="encodeuri-decodeuri">encodeURI, decodeURI</h3>
+
+<ul>
+  <li>encodeURI 함수는 완전한 URI를 문자열로 전달받아 이스케이프 처리를 위해 인코딩 하며, decodeURI는 이스케이프 처리 이전으로 디코딩 한다.</li>
+  <li>인코딩 : URI의 문자들을 이스케이프 처리하는 것.
+    <ul>
+      <li>이스케이프 : 네트워크를 통해 정보 공유 시 어떤 시스템에서도 해독 가능한 아스키 문자 셋으로 변환하는것.</li>
+    </ul>
+  </li>
+  <li>URI 문법 형식 표준에 따르면 URL은 아스키 문자 셋으로만 구성 되어야 하며, 한글을 포함한 대부분의 외국어나 아스키 문자 셋에 정의되지 않은 특수문자의 경우 URL에 포함될 수 없다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">uri</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">http://example.com?name=위버&amp;job=programmer&amp;teacher</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">encodeURI</span><span class="p">(</span><span class="nx">uri</span><span class="p">));</span>
+<span class="c1">// 'http://example.com?name=%EC%9C%84%EB%B2%84&amp;job=programmer&amp;teacher'</span>
+</code></pre></div></div>
+
+<h3 id="encodeuricomponent-decodeuricomponent">encodeURIComponent, decodeURIComponent</h3>
+
+<ul>
+  <li>URI 구성요소를 인수로 전달받아 인코딩 한다. 이 때, 문자열을 URI의 구성요소인 쿼리 스트링의 일부로 간주하여 쿼리 스트링 구분자(&amp;, ?, =)는 인코딩 하지 않는다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">uriComp</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">name=위버&amp;job=programmer&amp;teacher</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">encodeURIComponent</span><span class="p">(</span><span class="nx">uriComp</span><span class="p">));</span>
+<span class="c1">// "name%3D%EC%9C%84%EB%B2%84%26job%3Dprogrammer%26teacher"</span>
+</code></pre></div></div>
+
+<h2 id="암묵적-전역">암묵적 전역</h2>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">// 전역 변수</span>
+
+<span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">y</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">foo</span><span class="p">();</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">);</span> <span class="c1">// 30;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>y는 선언하지 않은 식별자지만, JS 엔진은 y를 window.y로 해석하여 전역 객체에 프로퍼티를 동적으로 생성한다. 이 현상을 암묵적 전역이라 한다.</li>
+  <li>하지만 단지 프로퍼티로 추가되었을 뿐이며, 변수가 아니므로 호이스팅 대상 x</li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#js-deepdive" class="page__taxonomy-item p-category" rel="tag">js-deepdive</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#book-study" class="page__taxonomy-item p-category" rel="tag">book-study</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2024-02-10T00:00:00+09:00">February 10, 2024</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=JavaScript+Deepdive+-+Built-in+Object%20http%3A%2F%2Flocalhost%3A4000%2Fbook-study%2FDeepdive_builtinObject%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fbook-study%2FDeepdive_builtinObject%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fbook-study%2FDeepdive_builtinObject%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/book-study/Deepdive_about_this/" class="pagination--pager" title="JavaScript Deepdive - this
+">이전</a>
+    
+    
+      <a href="/coding-test/%EB%A9%98%ED%86%A0%EB%A7%81/" class="pagination--pager" title="알고리즘 문제풀이 - 멘토링
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/coding-test/%EB%A9%98%ED%86%A0%EB%A7%81/" rel="permalink">알고리즘 문제풀이 - 멘토링
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          최대 1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">알고리즘 문제풀이 연습 - 6
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/book-study/Deepdive_about_this/" rel="permalink">JavaScript Deepdive - this
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          5 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">this 키워드
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/book-study/Practical_js_function/" rel="permalink">실용적인 자바스크립트 - Function
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Rest Parameter(나머지 파라미터)
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/book-study/Practical_js_basic/" rel="permalink">실용적인 자바스크립트 - Basic
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          5 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">폴리필(Polyfill)
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="malito:mynameiskuun@gmail.com" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+          <li><a href="https://github.com/mynameiskuun" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> Github</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2024 mynameiskuun. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'https://github.com/mynameiskuun/mynameiskuun.github.io');
+    script.setAttribute('issue-term', 'pathname');
+    
+    script.setAttribute('theme', 'github-light');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+
+  </body>
+</html>

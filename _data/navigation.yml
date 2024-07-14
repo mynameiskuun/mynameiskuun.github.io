@@ -55,6 +55,8 @@ sidebar-category:
     children:
       - title: "All"
         url: "/book-study/all"
+      - title: "Effective Java"
+        url: "/book-study/effective-java"
       - title: "Javascript Deep Dive"
         url: "/book-study/js-deepdive"
       - title: "만들면서 배우는 클린 아키텍쳐"

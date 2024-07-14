@@ -1,0 +1,1010 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Effective Java - Exception - 오늘보다 나은 내일</title>
+<meta name="description" content="10장. 예외(Exception)">
+
+
+  <meta name="author" content="mynameiskuun">
+  
+  <meta property="article:author" content="mynameiskuun">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="오늘보다 나은 내일">
+<meta property="og:title" content="Effective Java - Exception">
+<meta property="og:url" content="http://localhost:4000/book-study/Effective_java_about_exception/">
+
+
+  <meta property="og:description" content="10장. 예외(Exception)">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2024-07-14T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/book-study/Effective_java_about_exception/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "mynameiskuun",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="오늘보다 나은 내일 Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<link rel="shortcut icon" href="/assets/images/favicon(32x32).png" />
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          오늘보다 나은 내일
+          
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/profile.jpg" alt="mynameiskuun" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">mynameiskuun</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p><strong>학습 오류 수정을 위한 포스팅</strong></p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:mynameiskuun@gmail.com" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/mynameiskuun" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+    
+      
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">토글 메뉴</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <span class="nav__sub-title">DEV</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="/dev/all">All</a></li>
+          
+            <li><a href="/dev/java">JAVA</a></li>
+          
+            <li><a href="/dev/database">Database</a></li>
+          
+            <li><a href="/dev/javascript">JavaScript</a></li>
+          
+            <li><a href="/dev/devops">DevOps</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">Coding Test</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="/coding-test/all">All</a></li>
+          
+            <li><a href="/coding-test/sql">SQL</a></li>
+          
+            <li><a href="/coding-test/algorithm">Algorithm</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">Problem Solve</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="/problem-solve/all">All</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">Computer Science</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="/computer-science/all">All</a></li>
+          
+            <li><a href="/computer-science/data">Data Structure</a></li>
+          
+            <li><a href="/computer-science/network">Network</a></li>
+          
+            <li><a href="/computer-science/os">OS</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">Book Study</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="/book-study/all">All</a></li>
+          
+            <li><a href="/book-study/effective-java">Effective Java</a></li>
+          
+            <li><a href="/book-study/js-deepdive">Javascript Deep Dive</a></li>
+          
+            <li><a href="/book-study/clean-architecture">만들면서 배우는 클린 아키텍쳐</a></li>
+          
+            <li><a href="/book-study/practical-js">실용적인 자바스크립트</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Effective Java - Exception">
+    <meta itemprop="description" content="10장. 예외(Exception)">
+    <meta itemprop="datePublished" content="2024-07-14T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/book-study/Effective_java_about_exception/" class="u-url" itemprop="url">Effective Java - Exception
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
+              <ul class="toc__menu"><li><a href="#10장-예외exception">10장. 예외(Exception)</a><ul><li><a href="#item-69-예외는-진짜-예외-상황에만-사용하라">Item 69. 예외는 진짜 예외 상황에만 사용하라</a></li><li><a href="#번외-concurrentmodificationexception">번외. ConcurrentModificationException</a><ul><li><a href="#concurrentmodificationexception-에러-발생-이유">ConcurrentModificationException 에러 발생 이유</a></li></ul></li></ul></li><li><a href="#item-70-복구할-수-있는-상황에는-검사예외를-프로그래밍-오류에는-런타임-예외를-사용하라">Item 70. 복구할 수 있는 상황에는 검사예외를, 프로그래밍 오류에는 런타임 예외를 사용하라.</a></li><li><a href="#item-71-필요-없는-검사-예외-사용은-피하라">Item 71. 필요 없는 검사 예외 사용은 피하라</a></li><li><a href="#item-72-표준-예외를-사용하라">Item 72. 표준 예외를 사용하라.</a></li><li><a href="#item-73-추상화-수준에-맞는-예외를-던져라">Item 73. 추상화 수준에 맞는 예외를 던져라</a></li><li><a href="#item-75-예외의-상세-메시지에-실패-관련-정보를-담아라">Item 75. 예외의 상세 메시지에 실패 관련 정보를 담아라.</a></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="10장-예외exception">10장. 예외(Exception)</h1>
+
+<p><img src="/assets/images/Exception.png" alt="alt text" /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Feature</th>
+      <th>Checked Exception</th>
+      <th>Unchecked Exception</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>강제성</td>
+      <td>반드시 처리해야 함 (컴파일러가 검사)</td>
+      <td>처리하지 않아도 됨 (컴파일러가 검사하지 않음)</td>
+    </tr>
+    <tr>
+      <td>발생 시점</td>
+      <td>컴파일 타임</td>
+      <td>런타임</td>
+    </tr>
+    <tr>
+      <td>예시</td>
+      <td><code class="language-plaintext highlighter-rouge">IOException</code>, <code class="language-plaintext highlighter-rouge">SQLException</code>, <code class="language-plaintext highlighter-rouge">FileNotFoundException</code></td>
+      <td><code class="language-plaintext highlighter-rouge">NullPointerException</code>, <code class="language-plaintext highlighter-rouge">ArrayIndexOutOfBoundsException</code>, <code class="language-plaintext highlighter-rouge">ArithmeticException</code></td>
+    </tr>
+    <tr>
+      <td>주요 사용 사례</td>
+      <td>외부 자원 접근 (파일, 데이터베이스 등)</td>
+      <td>프로그래머의 실수로 인한 논리적 오류</td>
+    </tr>
+    <tr>
+      <td>처리 방법</td>
+      <td><code class="language-plaintext highlighter-rouge">try-catch</code> 블록 사용 또는 메서드에 <code class="language-plaintext highlighter-rouge">throws</code> 선언</td>
+      <td>선택적 처리, 필요에 따라 <code class="language-plaintext highlighter-rouge">try-catch</code> 블록 사용</td>
+    </tr>
+    <tr>
+      <td>사용 시점</td>
+      <td>호출하는 쪽에서 복구하리라 여겨지면</td>
+      <td>프로그래밍 오류를 나타낼 때</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="item-69-예외는-진짜-예외-상황에만-사용하라">Item 69. 예외는 진짜 예외 상황에만 사용하라</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span><span class="o">{</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+    <span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">range</span><span class="o">[</span><span class="n">i</span><span class="o">++].</span><span class="na">climb</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="nc">ArrayIndexOutOfBoundsException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>위 코드가 좋지 않은 코드인 이유는
+    <ul>
+      <li>무한루프를 돌다가, 배열의 끝을 넘어 ArrayIndexOutOfBoundsException 발생 시 루프를 종료 시키고 있다.</li>
+      <li>예외 처리를 예외 상황에서 사용하지 않고, 비즈니스 로직 제어용으로 사용하고 있다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="번외-concurrentmodificationexception">번외. ConcurrentModificationException</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+
+<span class="k">for</span><span class="o">(</span><span class="nc">Iterator</span><span class="o">&lt;</span><span class="nc">Foo</span><span class="o">&gt;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span> <span class="n">i</span><span class="o">.</span><span class="na">hasNext</span><span class="o">();)</span> <span class="o">{</span>
+    <span class="nc">String</span> <span class="n">a</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"A"</span><span class="o">))</span> <span class="o">{</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">a</span><span class="o">);</span> <span class="c1">// 1</span>
+        <span class="n">i</span><span class="o">.</span><span class="na">remove</span><span class="o">();</span> <span class="c1">// 2</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>반복문을 이렇게 Iterator 객체를 사용해서도 작성할 수 있다.</li>
+</ul>
+
+<blockquote>
+  <p>상대적으로 어떤 장점을 갖는지 ChatGPT에게 물어보던 중, Iterator 사용 시 ConcurrentModificationException를 피할 수 있다는 것을 알게 되었다.</p>
+</blockquote>
+
+<h4 id="concurrentmodificationexception-에러-발생-이유">ConcurrentModificationException 에러 발생 이유</h4>
+
+<ul>
+  <li>향상된 for loop은 내부적으로 Iterator를 사용하여 컬렉션을 순회한다.</li>
+  <li>Iterator는 컬렉션을 순회하는 동안 컬렉션의 구조적 변경을 감지하기 위해, Iterator 생성 시 expectedModCount 변수 값을 collection 객체의 modCount값과 동일하게 설정 한다.</li>
+  <li>
+    <p>그리고 Iterator는 next() 호출 시 expectedModCount / modCount 값을 비교 후 다를경우 ConcurrentModificationException 에러를 발생시킨다.</p>
+  </li>
+  <li>Iterator.remove()는 expectedModCount값을 정상적으로 갱신 시키지만, collection.remove()는 이 값을 갱신시키지 않아 상기 예외가 발생한다.</li>
+</ul>
+
+<blockquote>
+  <p>컬렉션 순회 중 컬렉션 내부를 수정 할 경우, 향상된 for문이 아닌 index로 접근하여 수정 혹은 Iterator를 사용하여 수정한다면 안전하게 수정이 가능하다.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="item-70-복구할-수-있는-상황에는-검사예외를-프로그래밍-오류에는-런타임-예외를-사용하라">Item 70. 복구할 수 있는 상황에는 검사예외를, 프로그래밍 오류에는 런타임 예외를 사용하라.</h2>
+
+<ul>
+  <li>
+    <p>프로그램의 안정성은 Unchecked Exception을 얼마나 잘 예측하고 관리하느냐에 달려있다. 추상화된 상위 Exception 객체를 사용하여 처리하기 보다는, 세분화된 하위 객체를 사용하여 개별 예외를 처리하자.</p>
+  </li>
+  <li>
+    <p>통상적으로 Unchecked Exception은 잡을 필요가 없거나, 잡지 말아야 한다.</p>
+    <ul>
+      <li>프로그램을 더 실행해봐야 득보다 실이 더 많다는 뜻이니, 적절한 메시지를 내뱉으며 해당 Thread를 중단 시켜야 한다.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="item-71-필요-없는-검사-예외-사용은-피하라">Item 71. 필요 없는 검사 예외 사용은 피하라</h2>
+
+<ul>
+  <li>Checked Exception의 남용은 쓰기 고통스러운 API를 낳는다. API 호출부에서 예외상황을 복구 할 방법이 없다면 Unchecked Exception을 던지자.
+    <ul>
+      <li>복구가 가능하고 호출자가 그 처리를 해주길 원한다면, Optional을 반환하는것을 우선 고민하자.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="item-72-표준-예외를-사용하라">Item 72. 표준 예외를 사용하라.</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>예외</th>
+      <th>주요 쓰임</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">IllegalArgumentException</code></td>
+      <td>호출자가 인수로 부적절한 값을 넘길 때 던지는 예외</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">IllegalStateException</code></td>
+      <td>대상 객체의 상태가 호출된 메서드를 수행하기에 적절하지 않을 때</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NullPointerException</code></td>
+      <td>null 값을 허용하지 않는 메서드에 null을 건낼 때</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">IndexOutOfBoundsException</code></td>
+      <td>시퀀스의 허용 범위를 넘을 때</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ConcurrentModificationException</code></td>
+      <td>단일 스레드에서 사용하려고 설계한 객체를 여러 스레드가 동시에 수정하려고 할 때</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">UnsupportedOperationException</code></td>
+      <td>클라이언트가 요청한 동작을 대상 객체가 지원하지 않을 때</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="item-73-추상화-수준에-맞는-예외를-던져라">Item 73. 추상화 수준에 맞는 예외를 던져라</h2>
+
+<ul>
+  <li>상위 계층에서는 저수준 예외를 잡아 자신의 추상화 수준에 맞는 예외로 바꿔 던져야 한다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// List 객체의 get() 메소드</span>
+
+<span class="kd">public</span> <span class="no">E</span> <span class="nf">get</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">ListIterator</span><span class="o">&lt;</span><span class="no">E</span><span class="o">&gt;</span> <span class="n">i</span> <span class="o">=</span> <span class="n">listIterator</span><span class="o">(</span><span class="n">index</span><span class="o">);</span>
+
+    <span class="k">try</span><span class="o">{</span>
+        <span class="k">return</span> <span class="n">i</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+    <span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="nc">NoSuchElementException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">IndexOutOfBoundsException</span><span class="o">(</span><span class="s">"index : "</span> <span class="o">+</span> <span class="n">index</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>예외 연쇄 : 문제의 근본 원인인 저수준 예외를 고수준 예외에 실어 보내는 방식.
+    <ul>
+      <li>저수준 예외가 디버깅에 도움이 될 경우 사용한다.</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">// 선언부</span>
+<span class="kd">public</span> <span class="nc">String</span> <span class="nf">processFile</span><span class="o">(</span><span class="nc">String</span> <span class="n">filePath</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">fileReaderUtil</span><span class="o">.</span><span class="na">readFile</span><span class="o">(</span><span class="n">filePath</span><span class="o">);</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">FileNotFoundException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">FileProcessingException</span><span class="o">(</span><span class="s">"The specified file was not found: "</span> <span class="o">+</span> <span class="n">filePath</span><span class="o">,</span> <span class="n">e</span><span class="o">);</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">FileProcessingException</span><span class="o">(</span><span class="s">"An error occurred while reading the file: "</span> <span class="o">+</span> <span class="n">filePath</span><span class="o">,</span> <span class="n">e</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// 호출부</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="o">...</span>
+
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="n">obj</span><span class="o">.</span><span class="na">processFile</span><span class="o">(</span><span class="s">"nonexistentfile.txt"</span><span class="o">);</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">FileProcessingException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Failed to process file: "</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
+        <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="item-75-예외의-상세-메시지에-실패-관련-정보를-담아라">Item 75. 예외의 상세 메시지에 실패 관련 정보를 담아라.</h2>
+
+<ul>
+  <li>실패 순간을 포착하려면 발생한 예외에 관련된 모든 매개변수와 필드의 값을 실패 메시지에 담아야 한다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">throw</span> <span class="k">new</span> <span class="nc">IndexOutOfBoundsException</span><span class="o">(</span><span class="nc">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"min : %d, max : %d, index : %d"</span><span class="o">,</span> <span class="n">minVal</span><span class="o">,</span> <span class="n">maxVal</span><span class="o">,</span> <span class="n">index</span><span class="o">));</span>
+</code></pre></div></div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#effective-java" class="page__taxonomy-item p-category" rel="tag">effective-java</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#book-study" class="page__taxonomy-item p-category" rel="tag">book-study</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2024-07-14T00:00:00+09:00">July 14, 2024</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Effective+Java+-+Exception%20http%3A%2F%2Flocalhost%3A4000%2Fbook-study%2FEffective_java_about_exception%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fbook-study%2FEffective_java_about_exception%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fbook-study%2FEffective_java_about_exception%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/coding-test/%EC%98%A4%ED%81%B0%EC%88%98/" class="pagination--pager" title="알고리즘 문제풀이 - 오큰수
+">이전</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/coding-test/%EC%98%A4%ED%81%B0%EC%88%98/" rel="permalink">알고리즘 문제풀이 - 오큰수
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">알고리즘 문제풀이 연습 - 7
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/book-study/Deepdive_builtinObject/" rel="permalink">JavaScript Deepdive - Built-in Object
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">자바스크립트 객체의 분류
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/book-study/Deepdive_about_this/" rel="permalink">JavaScript Deepdive - this
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          5 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">this 키워드
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/book-study/Practical_js_function/" rel="permalink">실용적인 자바스크립트 - Function
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Rest Parameter(나머지 파라미터)
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="malito:mynameiskuun@gmail.com" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+          <li><a href="https://github.com/mynameiskuun" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> Github</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2024 mynameiskuun. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'https://github.com/mynameiskuun/mynameiskuun.github.io');
+    script.setAttribute('issue-term', 'pathname');
+    
+    script.setAttribute('theme', 'github-light');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+
+  </body>
+</html>

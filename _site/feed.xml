@@ -1,9 +1,350 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-02-19T00:35:44+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">오늘보다 나은 내일</title><subtitle>An amazing website.</subtitle><author><name>mynameiskuun</name></author><entry><title type="html">알고리즘 문제풀이 - 멘토링</title><link href="http://localhost:4000/coding-test/%EB%A9%98%ED%86%A0%EB%A7%81/" rel="alternate" type="text/html" title="알고리즘 문제풀이 - 멘토링" /><published>2024-02-15T00:00:00+09:00</published><updated>2024-02-15T00:00:00+09:00</updated><id>http://localhost:4000/coding-test/%EB%A9%98%ED%86%A0%EB%A7%81</id><content type="html" xml:base="http://localhost:4000/coding-test/%EB%A9%98%ED%86%A0%EB%A7%81/"><![CDATA[<h2 id="알고리즘-문제풀이-연습---6">알고리즘 문제풀이 연습 - 6</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-07-15T00:38:31+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">오늘보다 나은 내일</title><subtitle>An amazing website.</subtitle><author><name>mynameiskuun</name></author><entry><title type="html">Effective Java - Exception</title><link href="http://localhost:4000/book-study/Effective_java_about_exception/" rel="alternate" type="text/html" title="Effective Java - Exception" /><published>2024-07-14T00:00:00+09:00</published><updated>2024-07-14T00:00:00+09:00</updated><id>http://localhost:4000/book-study/Effective_java_about_exception</id><content type="html" xml:base="http://localhost:4000/book-study/Effective_java_about_exception/"><![CDATA[<h1 id="10장-예외exception">10장. 예외(Exception)</h1>
 
-<p><img src="/assets/images/temp_leader.png" alt="Alt text" />
-<img src="/assets/images/temp_leader2.png" alt="Alt text" /></p>
+<p><img src="/assets/images/Exception.png" alt="alt text" /></p>
 
-<h3 id="제출한-답안">제출한 답안</h3>]]></content><author><name>mynameiskuun</name></author><category term="coding-test" /><category term="Algorithm" /><summary type="html"><![CDATA[알고리즘 문제풀이 연습 - 6]]></summary></entry><entry><title type="html">JavaScript Deepdive - Built-in Object</title><link href="http://localhost:4000/book-study/Deepdive_builtinObject/" rel="alternate" type="text/html" title="JavaScript Deepdive - Built-in Object" /><published>2024-02-10T00:00:00+09:00</published><updated>2024-02-10T00:00:00+09:00</updated><id>http://localhost:4000/book-study/Deepdive_builtinObject</id><content type="html" xml:base="http://localhost:4000/book-study/Deepdive_builtinObject/"><![CDATA[<h2 id="자바스크립트-객체의-분류">자바스크립트 객체의 분류</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Feature</th>
+      <th>Checked Exception</th>
+      <th>Unchecked Exception</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>강제성</td>
+      <td>반드시 처리해야 함 (컴파일러가 검사)</td>
+      <td>처리하지 않아도 됨 (컴파일러가 검사하지 않음)</td>
+    </tr>
+    <tr>
+      <td>발생 시점</td>
+      <td>컴파일 타임</td>
+      <td>런타임</td>
+    </tr>
+    <tr>
+      <td>예시</td>
+      <td><code class="language-plaintext highlighter-rouge">IOException</code>, <code class="language-plaintext highlighter-rouge">SQLException</code>, <code class="language-plaintext highlighter-rouge">FileNotFoundException</code></td>
+      <td><code class="language-plaintext highlighter-rouge">NullPointerException</code>, <code class="language-plaintext highlighter-rouge">ArrayIndexOutOfBoundsException</code>, <code class="language-plaintext highlighter-rouge">ArithmeticException</code></td>
+    </tr>
+    <tr>
+      <td>주요 사용 사례</td>
+      <td>외부 자원 접근 (파일, 데이터베이스 등)</td>
+      <td>프로그래머의 실수로 인한 논리적 오류</td>
+    </tr>
+    <tr>
+      <td>처리 방법</td>
+      <td><code class="language-plaintext highlighter-rouge">try-catch</code> 블록 사용 또는 메서드에 <code class="language-plaintext highlighter-rouge">throws</code> 선언</td>
+      <td>선택적 처리, 필요에 따라 <code class="language-plaintext highlighter-rouge">try-catch</code> 블록 사용</td>
+    </tr>
+    <tr>
+      <td>사용 시점</td>
+      <td>호출하는 쪽에서 복구하리라 여겨지면</td>
+      <td>프로그래밍 오류를 나타낼 때</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="item-69-예외는-진짜-예외-상황에만-사용하라">Item 69. 예외는 진짜 예외 상황에만 사용하라</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span><span class="o">{</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+    <span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">range</span><span class="o">[</span><span class="n">i</span><span class="o">++].</span><span class="na">climb</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="nc">ArrayIndexOutOfBoundsException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>위 코드가 좋지 않은 코드인 이유는
+    <ul>
+      <li>무한루프를 돌다가, 배열의 끝을 넘어 ArrayIndexOutOfBoundsException 발생 시 루프를 종료 시키고 있다.</li>
+      <li>예외 처리를 예외 상황에서 사용하지 않고, 비즈니스 로직 제어용으로 사용하고 있다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="번외-concurrentmodificationexception">번외. ConcurrentModificationException</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+
+<span class="k">for</span><span class="o">(</span><span class="nc">Iterator</span><span class="o">&lt;</span><span class="nc">Foo</span><span class="o">&gt;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span> <span class="n">i</span><span class="o">.</span><span class="na">hasNext</span><span class="o">();)</span> <span class="o">{</span>
+    <span class="nc">String</span> <span class="n">a</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"A"</span><span class="o">))</span> <span class="o">{</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">a</span><span class="o">);</span> <span class="c1">// 1</span>
+        <span class="n">i</span><span class="o">.</span><span class="na">remove</span><span class="o">();</span> <span class="c1">// 2</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>반복문을 이렇게 Iterator 객체를 사용해서도 작성할 수 있다.</li>
+</ul>
+
+<blockquote>
+  <p>상대적으로 어떤 장점을 갖는지 ChatGPT에게 물어보던 중, Iterator 사용 시 ConcurrentModificationException를 피할 수 있다는 것을 알게 되었다.</p>
+</blockquote>
+
+<h4 id="concurrentmodificationexception-에러-발생-이유">ConcurrentModificationException 에러 발생 이유</h4>
+
+<ul>
+  <li>향상된 for loop은 내부적으로 Iterator를 사용하여 컬렉션을 순회한다.</li>
+  <li>Iterator는 컬렉션을 순회하는 동안 컬렉션의 구조적 변경을 감지하기 위해, Iterator 생성 시 expectedModCount 변수 값을 collection 객체의 modCount값과 동일하게 설정 한다.</li>
+  <li>
+    <p>그리고 Iterator는 next() 호출 시 expectedModCount / modCount 값을 비교 후 다를경우 ConcurrentModificationException 에러를 발생시킨다.</p>
+  </li>
+  <li>Iterator.remove()는 expectedModCount값을 정상적으로 갱신 시키지만, collection.remove()는 이 값을 갱신시키지 않아 상기 예외가 발생한다.</li>
+</ul>
+
+<blockquote>
+  <p>컬렉션 순회 중 컬렉션 내부를 수정 할 경우, 향상된 for문이 아닌 index로 접근하여 수정 혹은 Iterator를 사용하여 수정한다면 안전하게 수정이 가능하다.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="item-70-복구할-수-있는-상황에는-검사예외를-프로그래밍-오류에는-런타임-예외를-사용하라">Item 70. 복구할 수 있는 상황에는 검사예외를, 프로그래밍 오류에는 런타임 예외를 사용하라.</h2>
+
+<ul>
+  <li>
+    <p>프로그램의 안정성은 Unchecked Exception을 얼마나 잘 예측하고 관리하느냐에 달려있다. 추상화된 상위 Exception 객체를 사용하여 처리하기 보다는, 세분화된 하위 객체를 사용하여 개별 예외를 처리하자.</p>
+  </li>
+  <li>
+    <p>통상적으로 Unchecked Exception은 잡을 필요가 없거나, 잡지 말아야 한다.</p>
+    <ul>
+      <li>프로그램을 더 실행해봐야 득보다 실이 더 많다는 뜻이니, 적절한 메시지를 내뱉으며 해당 Thread를 중단 시켜야 한다.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="item-71-필요-없는-검사-예외-사용은-피하라">Item 71. 필요 없는 검사 예외 사용은 피하라</h2>
+
+<ul>
+  <li>Checked Exception의 남용은 쓰기 고통스러운 API를 낳는다. API 호출부에서 예외상황을 복구 할 방법이 없다면 Unchecked Exception을 던지자.
+    <ul>
+      <li>복구가 가능하고 호출자가 그 처리를 해주길 원한다면, Optional을 반환하는것을 우선 고민하자.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="item-72-표준-예외를-사용하라">Item 72. 표준 예외를 사용하라.</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>예외</th>
+      <th>주요 쓰임</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">IllegalArgumentException</code></td>
+      <td>호출자가 인수로 부적절한 값을 넘길 때 던지는 예외</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">IllegalStateException</code></td>
+      <td>대상 객체의 상태가 호출된 메서드를 수행하기에 적절하지 않을 때</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NullPointerException</code></td>
+      <td>null 값을 허용하지 않는 메서드에 null을 건낼 때</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">IndexOutOfBoundsException</code></td>
+      <td>시퀀스의 허용 범위를 넘을 때</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ConcurrentModificationException</code></td>
+      <td>단일 스레드에서 사용하려고 설계한 객체를 여러 스레드가 동시에 수정하려고 할 때</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">UnsupportedOperationException</code></td>
+      <td>클라이언트가 요청한 동작을 대상 객체가 지원하지 않을 때</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="item-73-추상화-수준에-맞는-예외를-던져라">Item 73. 추상화 수준에 맞는 예외를 던져라</h2>
+
+<ul>
+  <li>상위 계층에서는 저수준 예외를 잡아 자신의 추상화 수준에 맞는 예외로 바꿔 던져야 한다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// List 객체의 get() 메소드</span>
+
+<span class="kd">public</span> <span class="no">E</span> <span class="nf">get</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">ListIterator</span><span class="o">&lt;</span><span class="no">E</span><span class="o">&gt;</span> <span class="n">i</span> <span class="o">=</span> <span class="n">listIterator</span><span class="o">(</span><span class="n">index</span><span class="o">);</span>
+
+    <span class="k">try</span><span class="o">{</span>
+        <span class="k">return</span> <span class="n">i</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+    <span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="nc">NoSuchElementException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">IndexOutOfBoundsException</span><span class="o">(</span><span class="s">"index : "</span> <span class="o">+</span> <span class="n">index</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>예외 연쇄 : 문제의 근본 원인인 저수준 예외를 고수준 예외에 실어 보내는 방식.
+    <ul>
+      <li>저수준 예외가 디버깅에 도움이 될 경우 사용한다.</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">// 선언부</span>
+<span class="kd">public</span> <span class="nc">String</span> <span class="nf">processFile</span><span class="o">(</span><span class="nc">String</span> <span class="n">filePath</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">fileReaderUtil</span><span class="o">.</span><span class="na">readFile</span><span class="o">(</span><span class="n">filePath</span><span class="o">);</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">FileNotFoundException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">FileProcessingException</span><span class="o">(</span><span class="s">"The specified file was not found: "</span> <span class="o">+</span> <span class="n">filePath</span><span class="o">,</span> <span class="n">e</span><span class="o">);</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">FileProcessingException</span><span class="o">(</span><span class="s">"An error occurred while reading the file: "</span> <span class="o">+</span> <span class="n">filePath</span><span class="o">,</span> <span class="n">e</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// 호출부</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="o">...</span>
+
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="n">obj</span><span class="o">.</span><span class="na">processFile</span><span class="o">(</span><span class="s">"nonexistentfile.txt"</span><span class="o">);</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">FileProcessingException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Failed to process file: "</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
+        <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="item-75-예외의-상세-메시지에-실패-관련-정보를-담아라">Item 75. 예외의 상세 메시지에 실패 관련 정보를 담아라.</h2>
+
+<ul>
+  <li>실패 순간을 포착하려면 발생한 예외에 관련된 모든 매개변수와 필드의 값을 실패 메시지에 담아야 한다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">throw</span> <span class="k">new</span> <span class="nc">IndexOutOfBoundsException</span><span class="o">(</span><span class="nc">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"min : %d, max : %d, index : %d"</span><span class="o">,</span> <span class="n">minVal</span><span class="o">,</span> <span class="n">maxVal</span><span class="o">,</span> <span class="n">index</span><span class="o">));</span>
+</code></pre></div></div>]]></content><author><name>mynameiskuun</name></author><category term="book-study" /><category term="effective-java" /><summary type="html"><![CDATA[10장. 예외(Exception)]]></summary></entry><entry><title type="html">알고리즘 문제풀이 - 오큰수</title><link href="http://localhost:4000/coding-test/%EC%98%A4%ED%81%B0%EC%88%98/" rel="alternate" type="text/html" title="알고리즘 문제풀이 - 오큰수" /><published>2024-06-30T00:00:00+09:00</published><updated>2024-06-30T00:00:00+09:00</updated><id>http://localhost:4000/coding-test/%EC%98%A4%ED%81%B0%EC%88%98</id><content type="html" xml:base="http://localhost:4000/coding-test/%EC%98%A4%ED%81%B0%EC%88%98/"><![CDATA[<h2 id="알고리즘-문제풀이-연습---7">알고리즘 문제풀이 연습 - 7</h2>
+
+<p><img src="/assets/images/NGE_1.png" alt="alt text" /></p>
+
+<h3 id="제출한-답안---오답-queue-기반">제출한 답안 - 오답 (Queue 기반)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="o">...</span>
+
+<span class="k">while</span> <span class="o">(!</span><span class="n">inputQueue</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">current</span> <span class="o">=</span> <span class="n">inputQueue</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+            <span class="kt">boolean</span> <span class="n">found</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">next</span> <span class="o">:</span> <span class="n">inputQueue</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">current</span> <span class="o">&lt;</span> <span class="n">next</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">answer</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">next</span><span class="o">);</span>
+                    <span class="n">found</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+                    <span class="k">break</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+
+            <span class="k">if</span> <span class="o">(!</span><span class="n">found</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">answer</span><span class="o">.</span><span class="na">add</span><span class="o">(-</span><span class="mi">1</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+<span class="o">...</span>
+
+</code></pre></div></div>
+
+<h3 id="수정-답안---정답">수정 답안 - 정답</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+
+        <span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+        <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">));</span>
+
+        <span class="kt">int</span> <span class="n">size</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">numbers</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">size</span><span class="o">];</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">size</span><span class="o">];</span>
+
+        <span class="nc">StringTokenizer</span> <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">(),</span> <span class="s">" "</span><span class="o">);</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">size</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">numbers</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+        <span class="o">}</span>
+
+        <span class="nc">Stack</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Stack</span><span class="o">&lt;&gt;();</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">size</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">while</span> <span class="o">(!</span><span class="n">stack</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">numbers</span><span class="o">[</span><span class="n">stack</span><span class="o">.</span><span class="na">peek</span><span class="o">()]</span> <span class="o">&lt;</span> <span class="n">numbers</span><span class="o">[</span><span class="n">i</span><span class="o">])</span> <span class="o">{</span>
+                <span class="n">result</span><span class="o">[</span><span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">()]</span> <span class="o">=</span> <span class="n">numbers</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+            <span class="o">}</span>
+            <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="k">while</span> <span class="o">(!</span><span class="n">stack</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">result</span><span class="o">[</span><span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">()]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">val</span> <span class="o">:</span> <span class="n">result</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">val</span> <span class="o">+</span> <span class="s">" "</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">bw</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+    <span class="o">}</span>
+
+</code></pre></div></div>
+
+<h2 id="분석">분석</h2>
+
+<h3 id="요점">요점</h3>
+
+<ol>
+  <li>Stack을 어떻게 활용 할 것인가</li>
+  <li>최대 1백만개 인수가 들어올 수 있으므로, O(n)으로 문제 풀이 필요 - 오답 이유</li>
+</ol>
+
+<h3 id="풀이">풀이</h3>
+
+<ol>
+  <li>
+    <p>Queue 기반 문제 풀이는 O(N^2) 시간 복잡도를, Stack 기반 풀이는 O(N) 시간 복잡도를 가진다. - Queue 기반 풀이 시 인수가 1,000,000개 일 때 최대 1,000,000 * 999,999 번 반복. (최대 cnt = 약 1조)</p>
+
+    <ul>
+      <li>Stack 기반 풀이도 내부 반복문에서 Stack size만큼 반복이 된다. 하지만 Stack의 조건에 따라 제한적으로 반복되며, 각 요소들은 push / pop을 통해 최대 2번만 처리되므로 전체 시간복잡도는 O(N) 이다.</li>
+      <li>중첩 반복문을 사용 했다고 하여 반드시 O(N^2) 시간복잡도를 가지진 않는다.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Stack에 value가 아닌 index를 저장한다.</p>
+    <ul>
+      <li>현재 value 기준 바로 다음 value가 오큰수가 아닐 시, Stack에 해당 index를 push 한다.</li>
+      <li>이후 오큰수 발견 시, 해당 index value 및 Stack에 쌓인 index value들과 오큰수를 비교하여 해당하는 값들을 치환한다.
+        <ul>
+          <li>발견된 오큰수는 Stack에 쌓인 index value들의 오큰수도 될 수 있다.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="흐름">흐름</h3>
+
+<ol>
+  <li>Stack이 비어있다면 반복문의 현재 index 값을 Stack에 push 한다.</li>
+  <li>Stack의 peek 값(직전값)보다 현재 index값이 크다면, Stack의 모든 값을 현재 값으로 치환한다.</li>
+  <li>최초 입력받은 Size만큼 1,2번을 반복한다. 완료 이후 Stack에 남아있는 index들은 오큰수가 존재하지 않는 값들이므로, 모두 -1로 치환한다.</li>
+</ol>]]></content><author><name>mynameiskuun</name></author><category term="coding-test" /><category term="Algorithm" /><summary type="html"><![CDATA[알고리즘 문제풀이 연습 - 7]]></summary></entry><entry><title type="html">JavaScript Deepdive - Built-in Object</title><link href="http://localhost:4000/book-study/Deepdive_builtinObject/" rel="alternate" type="text/html" title="JavaScript Deepdive - Built-in Object" /><published>2024-02-10T00:00:00+09:00</published><updated>2024-02-10T00:00:00+09:00</updated><id>http://localhost:4000/book-study/Deepdive_builtinObject</id><content type="html" xml:base="http://localhost:4000/book-study/Deepdive_builtinObject/"><![CDATA[<h2 id="자바스크립트-객체의-분류">자바스크립트 객체의 분류</h2>
 
 <blockquote>
   <p>자바스크립트 객체는 다음과 같이 크게 3개의 객체로 분류할 수 있다.</p>
@@ -1650,112 +1991,4 @@ tmp : /10 연산을 통해 자릿수를 줄여나감. 반복문의 종료시점�
 
 <blockquote>
   <p>2 ~ n 까지의 숫자 중 어느것도 약수가 아닐때, (1과 자기 자신이 약수일 때) 해당 수는 소수가 된다.</p>
-</blockquote>]]></content><author><name>mynameiskuun</name></author><category term="coding-test" /><category term="Algorithm" /><summary type="html"><![CDATA[알고리즘 문제풀이 연습 - 3]]></summary></entry><entry><title type="html">알고리즘 문제풀이 - 피보나치 수열</title><link href="http://localhost:4000/coding-test/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4(2)/" rel="alternate" type="text/html" title="알고리즘 문제풀이 - 피보나치 수열" /><published>2023-12-21T00:00:00+09:00</published><updated>2023-12-21T00:00:00+09:00</updated><id>http://localhost:4000/coding-test/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%20%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4(2)</id><content type="html" xml:base="http://localhost:4000/coding-test/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4(2)/"><![CDATA[<h2 id="알고리즘-문제풀이-연습---2">알고리즘 문제풀이 연습 - 2</h2>
-
-<h3><img src="/assets/images/Algorithm_2.png" alt="피보나치 수열" /></h3>
-
-<hr />
-
-<h3 id="제출한-답안">제출한 답안</h3>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span> <span class="n">count</span><span class="o">)</span> <span class="o">{</span>
-
-        <span class="kt">int</span><span class="o">[]</span> <span class="n">answer</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">count</span><span class="o">];</span>
-        <span class="n">answer</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
-        <span class="n">answer</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
-
-        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">count</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="n">answer</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">answer</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="o">]</span> <span class="o">+</span> <span class="n">answer</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">];</span>
-        <span class="o">}</span>
-
-        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
-    <span class="o">}</span>
-</code></pre></div></div>
-
-<h2 id="문제-해결-중-학습한-부분">문제 해결 중 학습한 부분.</h2>
-
-<h3 id="재귀함수">재귀함수</h3>
-
-<ul>
-  <li>
-    <p>재귀란?</p>
-
-    <blockquote>
-      <p>컴퓨터 과학에서, 자신을 정의할 때 자기 자신을 재참조 하는 방법.</p>
-    </blockquote>
-  </li>
-  <li>
-    <p>재귀함수란?</p>
-    <blockquote>
-      <p>재귀의 설명 그대로, 함수에서 자기 자신을 다시 호출해 작업을 수행하는 방식.
-주로 반복문을 구현할 때 사용한다.</p>
-    </blockquote>
-  </li>
-</ul>
-
-<hr />
-
-<h3 id="재귀함수를-이용한-피보나치-수열-구현">재귀함수를 이용한 피보나치 수열 구현</h3>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span> <span class="n">count</span><span class="o">)</span> <span class="o">{</span>
-
-    <span class="k">if</span><span class="o">(</span><span class="n">count</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
-    <span class="o">}</span>
-    <span class="k">return</span> <span class="nf">solution</span><span class="o">(</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="o">)</span> <span class="o">+</span> <span class="n">solution</span><span class="o">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<hr />
-
-<h3 id="재귀함수의-장단점">재귀함수의 장단점</h3>
-
-<h4 id="장점">장점</h4>
-
-<ul>
-  <li>가독성이 향상된다.</li>
-  <li>변수 사용을 줄여줌으로서, 변경 가능성(mutable state)을 최소화 시켜 프로그램의 안정성을 향상시킨다.</li>
-</ul>
-
-<h4 id="단점">단점</h4>
-
-<ul>
-  <li>매개변수, 지역변수, 리턴 값, 함수 종료 후 복귀지점이 스택 메모리에 저장되기 때문에, 메모리 사용량이 높다.</li>
-  <li>그렇기 때문에 일반적으로 반복문 보다 성능이 낮다.</li>
-</ul>
-
-<hr />
-
-<h3 id="재귀함수-단점-보완을-위한-방법">재귀함수 단점 보완을 위한 방법</h3>
-
-<h4 id="메모이제이션">메모이제이션</h4>
-
-<blockquote>
-  <p>재귀함수의 단점을 보완하기 위한 방법으로 값비싼 함수 호출의 결과를 캐싱하고, 동일한 입력이 발생할 때 함수를 호출하지 않고 캐싱된 결과를 반환하는 기술.</p>
-</blockquote>
-
-<hr />
-
-<h3 id="메모이제이션을-사용해-구현한-피보나치-수열">메모이제이션을 사용해 구현한 피보나치 수열</h3>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">memo</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kt">int</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span> <span class="n">count</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">if</span><span class="o">(</span><span class="n">memo</span><span class="o">[</span><span class="n">count</span><span class="o">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">memo</span><span class="o">[</span><span class="n">count</span><span class="o">];</span>
-    <span class="o">}</span>
-    <span class="k">if</span><span class="o">(</span><span class="n">count</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
-    <span class="o">}</span>
-    <span class="k">return</span> <span class="n">memo</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">solution</span><span class="o">(</span><span class="n">count</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">+</span> <span class="n">solution</span><span class="o">(</span><span class="n">count</span> <span class="o">-</span> <span class="mi">2</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<ul>
-  <li>기존의 로직이라면, 캐싱된 값이 없기 때문에 콜스택에 count만큼 지역변수, 매개변수, 반환주소 등이 쌓이고, count의 마지막 부분에 가서야 모든 작업이 수행됨.</li>
-  <li>메모이제이션을 사용할 경우, static 변수에 한번 연산된 값을 저장하게 됨. 이 경우, 한번 연산된 값은 이후 재귀함수를 통해 재연산이 불필요.</li>
-</ul>
-
-<blockquote>
-  <p>핵심 : 한번 연산된 값을 저장해서, 이후 동일 작업이 호출될 때 재연산을 하는게 아닌 저장된 값을 반환한다.</p>
-</blockquote>]]></content><author><name>mynameiskuun</name></author><category term="coding-test" /><category term="Algorithm" /><summary type="html"><![CDATA[알고리즘 문제풀이 연습 - 2]]></summary></entry></feed>
+</blockquote>]]></content><author><name>mynameiskuun</name></author><category term="coding-test" /><category term="Algorithm" /><summary type="html"><![CDATA[알고리즘 문제풀이 연습 - 3]]></summary></entry></feed>
